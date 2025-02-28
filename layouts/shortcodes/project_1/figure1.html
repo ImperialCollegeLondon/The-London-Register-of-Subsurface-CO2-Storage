@@ -1,0 +1,293 @@
+<div class="mt-5" style="overflow-x: auto;">
+    <div class="figure1-plot-container">
+        <div id="legend"></div>
+        <figure class="figure">
+            <svg id="project_1_figure_1"></svg>
+        </figure>
+    </div>
+</div>
+<figcaption class="figure-caption" style="text-align: center;">
+    Figure 1: Plot comparing the compiled 2019 estimates of capture rate capacity,
+    capture rate, average storage rate, and storage rate for 20 operational CCS projects.
+</figcaption>
+
+<template id="legend-grp-template">
+    <div class="legend-grp">
+        <b>
+            <div class="legend-grp-header"></div>
+        </b>
+        <div class="legend-grp-content"></div>
+    </div>
+</template>
+
+<template id="legend-btn-template">
+    <div>
+        <div class="legend-btn">
+            <span class="legend-color"></span>
+            <span class="legend-text"></span>
+        </div>
+    </div>
+</template>
+
+<script type="module">
+
+    const figure1Data = [{ "id": "Sleipner", "metric": "capture_capacity", "value": 1.0 }, { "id": "Snohvit", "metric": "capture_capacity", "value": 0.7 }, { "id": "Quest", "metric": "capture_capacity", "value": 1.2 }, { "id": "Century", "metric": "capture_capacity", "value": 5.0 }, { "id": "Illinois", "metric": "capture_capacity", "value": 1.0 }, { "id": "Coffeyville", "metric": "capture_capacity", "value": 1.0 }, { "id": "Core", "metric": "capture_capacity", "value": 0.35 }, { "id": "ACTL", "metric": "capture_capacity", "value": 1.7 }, { "id": "Zhongyuan", "metric": "capture_capacity", "value": 0.12 }, { "id": "Petrobras", "metric": "capture_capacity", "value": 4.6 }, { "id": "group of 3 qatar + gordon + shute creek", "metric": "capture_capacity", "value": 13.1 }, { "id": "boundary dam", "metric": "capture_capacity", "value": 1.0 }, { "id": "karamay", "metric": "capture_capacity", "value": 0.1 }, { "id": "jilin", "metric": "capture_capacity", "value": 0.6 }, { "id": "Air Products", "metric": "capture_capacity", "value": 1.0 }, { "id": "GPSP", "metric": "capture_capacity", "value": 3.0 }, { "id": "arkalon", "metric": "capture_capacity", "value": 0.29 }, { "id": "Sleipner", "metric": "capture_rate", "value": 0.7 }, { "id": "Snohvit", "metric": "capture_rate", "value": 0.8 }, { "id": "Quest", "metric": "capture_rate", "value": 1.182 }, { "id": "Century", "metric": "capture_rate", "value": 8.4 }, { "id": "Illinois", "metric": "capture_rate", "value": 0.52 }, { "id": "Coffeyville", "metric": "capture_rate", "value": 1.16 }, { "id": "Core", "metric": "capture_rate", "value": 0.31 }, { "id": "ACTL", "metric": "capture_rate", "value": 1.0 }, { "id": "Zhongyuan", "metric": "capture_rate", "value": 0.35 }, { "id": "Petrobras", "metric": "capture_rate", "value": 4.6 }, { "id": "group of 3 qatar + gordon + shute creek", "metric": "capture_rate", "value": 7.8 }, { "id": "boundary dam", "metric": "capture_rate", "value": 0.65 }, { "id": "karamay", "metric": "capture_rate", "value": 0.02 }, { "id": "jilin", "metric": "capture_rate", "value": 0.63 }, { "id": "Air Products", "metric": "capture_rate", "value": 1.09 }, { "id": "GPSP", "metric": "capture_rate", "value": 2.0 }, { "id": "arkalon", "metric": "capture_rate", "value": 0.092 }, { "id": "Sleipner", "metric": "storage_rate_hybrid", "value": 0.65 }, { "id": "Snohvit", "metric": "storage_rate_hybrid", "value": 0.7 }, { "id": "Quest", "metric": "storage_rate_hybrid", "value": 1.128 }, { "id": "Century", "metric": "storage_rate_hybrid", "value": 7.05 }, { "id": "Illinois", "metric": "storage_rate_hybrid", "value": 0.52 }, { "id": "Coffeyville", "metric": "storage_rate_hybrid", "value": 1.16 }, { "id": "Core", "metric": "storage_rate_hybrid", "value": 0.31 }, { "id": "ACTL", "metric": "storage_rate_hybrid", "value": 1.0 }, { "id": "Zhongyuan", "metric": "storage_rate_hybrid", "value": 0.1 }, { "id": "Petrobras", "metric": "storage_rate_hybrid", "value": 4.6 }, { "id": "group of 3 qatar + gordon + shute creek", "metric": "storage_rate_hybrid", "value": 7.8 }, { "id": "boundary dam", "metric": "storage_rate_hybrid", "value": 0.045 }, { "id": "karamay", "metric": "storage_rate_hybrid", "value": 0.02 }, { "id": "jilin", "metric": "storage_rate_hybrid", "value": 0.63 }, { "id": "Air Products", "metric": "storage_rate_hybrid", "value": 1.09 }, { "id": "GPSP", "metric": "storage_rate_hybrid", "value": 2.0 }, { "id": "arkalon", "metric": "storage_rate_hybrid", "value": 0.092 }];
+    const figure1Meta = [{ "id": "arkalon", "legend": "Arkalon", "color": "rgb(254,153,41)", "description": "arkalon", "category": 3, "country": "US", "storage_type": "EOR", "operator": "Farnsworth Unit " }, { "id": "GPSP", "legend": "GPSP", "color": "rgb(237,237,104)", "description": "GPSP", "category": 3, "country": "US/Canada", "storage_type": NaN, "operator": "Aquistore (A) & Weburn Midale Whitecap Resources (W)" }, { "id": "Air Products", "legend": "Air Products", "color": "rgb(70,127,194)", "description": "Air Products", "category": 2, "country": "US", "storage_type": "EOR", "operator": "Gulf Coast Denbury " }, { "id": "jilin", "legend": "Jilin", "color": "rgb(48,40,124)", "description": "jilin", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Jilin CNPC " }, { "id": "karamay", "legend": "Karamay", "color": "rgb(14,0,126)", "description": "karamay", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Karamay Dunhua" }, { "id": "boundary dam", "legend": "Boundary/Aquistore", "color": "rgb(37,0,249)", "description": "boundary dam", "category": 2, "country": "Canada", "storage_type": "EOR", "operator": "Aquistore (A) & Weburn Midale Whitecap Resources (W)" }, { "id": "group of 3 qatar + gordon + shute creek", "legend": "SC/Qatar/Gorgon", "color": "rgb(108,168,206)", "description": "group of 3 qatar + gordon + shute creek", "category": 2, "country": "Qatar/US/Australia", "storage_type": "Geological Storage/EOR ", "operator": "Chevron (C) & Exxon Mobile (EM)" }, { "id": "Petrobras", "legend": "Petrobras", "color": "rgb(143,197,216)", "description": "Petrobras", "category": 2, "country": "Brazil", "storage_type": "EOR", "operator": "Santos Basin Petrobras " }, { "id": "Zhongyuan", "legend": "Zhongyuan", "color": "rgb(170,212,227)", "description": "Zhongyuan", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Zhongyuan Sinopec " }, { "id": "ACTL", "legend": "ACTL", "color": "rgb(174,217,68)", "description": "ACTL", "category": 1, "country": NaN, "storage_type": NaN, "operator": NaN }, { "id": "Core", "legend": "Core", "color": "rgb(37,57,33)", "description": "Core", "category": 1, "country": "US", "storage_type": "EOR", "operator": "Core Energy" }, { "id": "Coffeyville", "legend": "Coffeyville", "color": "rgb(68,117,56)", "description": "Coffeyville", "category": 1, "country": "US", "storage_type": "EOR", "operator": "North Burbank Unit " }, { "id": "Illinois", "legend": "Illinois", "color": "rgb(92,161,73)", "description": "Illinois", "category": 1, "country": "US", "storage_type": "Geological Storage ", "operator": "Illinois ADM " }, { "id": "Century", "legend": "Century", "color": "rgb(112,146,81)", "description": "Century", "category": 1, "country": "US", "storage_type": "EOR", "operator": "Occidental Petroleum/Denver Unit/Hobbs Unit " }, { "id": "Quest", "legend": "Quest", "color": "rgb(146,183,85)", "description": "Quest", "category": 1, "country": "Canada", "storage_type": "Geological Storage ", "operator": "Quest Shell " }, { "id": "Snohvit", "legend": "Snohvit", "color": "rgb(193,228,162)", "description": "Snohvit", "category": 1, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor" }, { "id": "Sleipner", "legend": "Sleipner", "color": "rgb(205,239,216)", "description": "Sleipner", "category": 1, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor" }];
+    let data = figure1Data;
+    const categories = [
+        { name: "Category 1", id: 1, color: "rgb(226, 239, 217)" },
+        { name: "Category 2", id: 2, color: "rgb(222, 234, 246)" },
+        { name: "Category 3", id: 3, color: "rgb(251, 241, 210)" }
+    ];
+
+    const buildToolTipDiv = (itemId, metric, value) => {
+        const itemMeta = figure1Meta.find(x => x.id == itemId);
+        const { operator, country, storage_type } = itemMeta;
+
+        return `
+        <div><b>Facility:</b></div>
+    <div id="itemId">${itemId}</div>
+
+    <div><b>Operator:</b></div>
+    <div id="operator-value">${operator}</div>
+
+    <div><b>Country:</b></div>
+    <div id="country-value">${country}</div>
+
+    <div><b>Storage Type:</b></div>
+    <div id="storage_type-value">${storage_type}</div>
+
+    <div><b id="metric-title">${metric}</b></div>
+    <div id="metric-value">${value}</div>
+        `
+    }
+
+    let visibleIds = new Set(figure1Meta.map(item => item.id));
+    let onlyVisibleCategory = null;
+
+    const changeLegendBtnColor = (id) => {
+        const item = figure1Meta.find(x => x.id == id);
+        const legendBtn = document.getElementById(`legend-btn-${id}`);
+        const legendColor = legendBtn.querySelector('.legend-color')
+        legendColor.style.backgroundColor = item.color;
+        const legendText = legendBtn.querySelector('.legend-text')
+        legendText.textContent = item.legend;
+
+        if (visibleIds.has(id)) {
+            legendColor.style.backgroundColor = item.color
+            legendText.style.color = "";
+        } else {
+            legendColor.style.backgroundColor = "rgba(0,0,0,0.1)";
+            legendText.style.color = "rgba(0,0,0,0.2)";
+        }
+    }
+
+    const changeLegendGrpHeaderColor = (grpId) => {
+        const grpMeta = categories.find(x => x.id == grpId);
+        const grpHeader = document.getElementById(`legend-grp-header-${grpId}`);
+        if (onlyVisibleCategory == grpId || onlyVisibleCategory == null) {
+            grpHeader.style.backgroundColor = grpMeta.color;
+            grpHeader.style.color = "";
+        } else {
+            grpHeader.style.backgroundColor = "rgba(0,0,0,0.05)";
+            grpHeader.style.color = "rgba(0,0,0,0.2)";
+        }
+    }
+
+    const onlyShowGroup = (grpId) => {
+        if (onlyVisibleCategory == grpId) {
+            onlyVisibleCategory = null;
+            visibleIds = new Set(figure1Meta.map(item => item.id));
+        } else {
+            onlyVisibleCategory = grpId;
+            const grpLegendIds = figure1Meta.filter(item => item.category == grpId).map(item => item.id);
+            visibleIds = new Set(grpLegendIds);
+        }
+        figure1Meta.forEach(item => {
+            changeLegendBtnColor(item.id);
+        })
+        categories.forEach(item => changeLegendGrpHeaderColor(item.id))
+        data = figure1Data.filter(x => visibleIds.has(x.id));
+    }
+
+    const changeIdVisiblity = (ids) => {
+        ids.forEach((x) => {
+            if (visibleIds.has(x)) {
+                visibleIds.delete(x);
+            } else {
+                visibleIds.add(x);
+            }
+        });
+        data = figure1Data.filter(x => visibleIds.has(x.id))
+    }
+
+    const legendDiv = document.getElementById("legend")
+
+    const drawLegends = (grpMeta, grpObj) => {
+
+        const grpLegends = figure1Meta.filter((item) => {
+            return item.category == grpMeta.id
+        });
+
+        grpLegends.forEach((item) => {
+            const template = document.getElementById('legend-btn-template');
+            const clone = template.content.cloneNode(true);
+
+            const legendColor = clone.querySelector('.legend-color')
+            legendColor.style.backgroundColor = item.color;
+            const legendText = clone.querySelector('.legend-text')
+            legendText.textContent = item.legend;
+
+            const legendBtn = clone.querySelector('.legend-btn')
+            legendBtn.id = `legend-btn-${item.id}`;
+            legendBtn.onclick = (e) => {
+                changeIdVisiblity([item.id])
+                legendText.textContent = `${item.legend}`
+                if (visibleIds.has(item.id)) {
+                    legendColor.style.backgroundColor = item.color
+                    legendText.style.color = "";
+                } else {
+                    legendColor.style.backgroundColor = "rgba(0,0,0,0.1)";
+                    legendText.style.color = "rgba(0,0,0,0.2)";
+                }
+                plot();
+            };
+            grpObj.appendChild(clone)
+        })
+    }
+
+    categories.forEach((cat) => {
+        const grpTemplate = document.getElementById('legend-grp-template');
+        const grpClone = grpTemplate.content.cloneNode(true);
+
+        const grpHeader = grpClone.querySelector('.legend-grp-header');
+        grpHeader.id = `legend-grp-header-${cat.id}`;
+        grpHeader.style.backgroundColor = cat.color;
+        grpHeader.textContent = cat.name;
+        grpHeader.onclick = (e) => {
+            onlyShowGroup(cat.id);
+            plot();
+        }
+
+        const grpContent = grpClone.querySelector('.legend-grp-content');
+        drawLegends(cat, grpContent);
+        legendDiv.appendChild(grpClone);
+    })
+
+    const plot = () => {
+        const margin = { top: 20, right: 120, bottom: 20, left: 20 };
+        const width = 600 - margin.left - margin.right;
+        const height = 600 - margin.top - margin.bottom;
+
+        const series = d3.stack()
+            .keys(d3.union(data.map(d => d.id))) // distinct series keys, in input order
+            .value(([, D], key) => D.get(key).value) // get value for each series key and stack
+            (d3.index(data, d => d.metric, d => d.id)); // group by stack then series key
+
+        const x = d3.scaleBand()
+            .domain(d3.groupSort(data, D => -d3.sum(D, d => d.value), d => d.metric))
+            .range([margin.left, width - margin.right])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
+            .rangeRound([height - margin.bottom, margin.top]);
+
+        let svg = d3.select("#project_1_figure_1");
+        svg.selectAll('*').remove();
+        svg = d3.select("#project_1_figure_1")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const tooltip = d3.select("#project_1_figure_1")
+            .append("foreignObject")
+            .attr("width", "200")
+            .attr("height", "400")
+        const tooltipDiv = tooltip
+            .append('xhtml:div')
+
+        // Three function that change the tooltip when user hover / move / leave a cell
+        const mouseover = function (d) {
+            const subgroupName = d3.select(this.parentNode).datum().key;
+            const metric = d.target.__data__.data[0];
+            const subgroupValue = figure1Data.find(x => x.id == subgroupName && x.metric == metric);
+            // tooltip
+            //     .text(subgroupName + ":" + subgroupValue?.value)
+            //     .style("opacity", 1)
+            const toolTipDivContent = buildToolTipDiv(subgroupName, metric, subgroupValue?.value)
+            tooltipDiv
+                // .html(subgroupName + ":" + subgroupValue?.value)
+                .html(toolTipDivContent)
+                .style("background", "#FFFFFF")
+                .style("padding", "8px 8px 8px 8px")
+                .style("border", "solid 1px #000000")
+                .style("opacity", 0.8)
+            tooltip.style("opacity", 1)
+        }
+        const mousemove = function (d) {
+
+            //            tooltip
+            //              .attr("x", (d3.pointer(d)[0] + 90)) // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            //            .attr("y", (d3.pointer(d)[1]))
+
+            d3.select(this)
+                .transition()
+                .duration(50)
+                .attr("opacity", 0.5)
+                .attr("stroke", "rgba(200,200,200,1)")
+                .attr("stroke-width", 2)
+            tooltip
+                .attr("x", width - 80)
+                .attr("y", 100)
+        }
+        const mouseleave = function (d) {
+            tooltip
+                .style("opacity", 0)
+            d3.select(this)
+                .transition()
+                .duration(50)
+                .attr("opacity", 1)
+                .attr("stroke", "rgba(156,156,156,1)")
+                .attr("stroke-width", 1)
+        }
+
+        // Append a group for each series, and a rect for each element in the series.
+        svg.append("g")
+            .selectAll()
+            .data(series)
+            .join("g")
+            // .attr("fill", d => figure1Color[d.key])
+            .attr("fill", d => figure1Meta.find(x => x.id == d.key).color)
+            // .style("fill-opacity", 0.8)
+            .style("stroke", "rgba(156,156,156,1)")
+            .style("stroke-width", 1)
+            .selectAll("rect")
+            .data(D => D.map(d => (d.key = D.key, d)))
+            .join("rect")
+            .attr("x", d => x(d.data[0]))
+            .attr("y", d => y(d[1]))
+            .attr("height", d => y(d[0]) - y(d[1]))
+            .attr("width", x.bandwidth())
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave)
+        // .append("title")
+        // .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key).population)}`)
+
+        // Append the horizontal axis.
+        svg.append("g")
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .call(g => g.selectAll(".domain").remove());
+
+        // Append the vertical axis.
+        svg.append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y).ticks(null, "s"))
+            .call(g => g.selectAll(".domain").remove());
+    }
+
+    plot();
+</script>

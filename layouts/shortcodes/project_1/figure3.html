@@ -1,0 +1,128 @@
+<div class="mt-5" style="overflow-x: auto;">
+    <div class="figure1-plot-container" id="project_1_figure_3_container">
+        <figure class="figure">
+            <svg id="project_1_figure_3"></svg>
+        </figure>
+    </div>
+</div>
+<figcaption class="figure-caption" style="text-align: center;">
+    Figure 3: Global storage rate annaul average growth
+</figcaption>
+<script type="module">
+    const data = [{"year": 1996, "storage_rate": 0.07}, {"year": 1997, "storage_rate": 0.665}, {"year": 1998, "storage_rate": 0.842}, {"year": 1999, "storage_rate": 0.971}, {"year": 2000, "storage_rate": 0.933}, {"year": 2000, "storage_rate": 2.72188}, {"year": 2001, "storage_rate": 2.79788}, {"year": 2002, "storage_rate": 2.74388}, {"year": 2003, "storage_rate": 2.70288}, {"year": 2004, "storage_rate": 2.53888}, {"year": 2005, "storage_rate": 2.64688}, {"year": 2006, "storage_rate": 2.60888}, {"year": 2006, "storage_rate": 2.70888}, {"year": 2007, "storage_rate": 2.80988}, {"year": 2008, "storage_rate": 2.70288}, {"year": 2008, "storage_rate": 3.78988}, {"year": 2009, "storage_rate": 3.94688}, {"year": 2010, "storage_rate": 3.98188}, {"year": 2010, "storage_rate": 3.98188}, {"year": 2011, "storage_rate": 4.11088}, {"year": 2011, "storage_rate": 9.11088}, {"year": 2012, "storage_rate": 8.91088}, {"year": 2013, "storage_rate": 9.84988}, {"year": 2013, "storage_rate": 9.94188}, {"year": 2014, "storage_rate": 11.01588}, {"year": 2015, "storage_rate": 11.15688}, {"year": 2015, "storage_rate": 11.59288}, {"year": 2016, "storage_rate": 11.72788}, {"year": 2016, "storage_rate": 14.81788}, {"year": 2017, "storage_rate": 17.48288}, {"year": 2017, "storage_rate": 19.14938}, {"year": 2018, "storage_rate": 20.367002}, {"year": 2018, "storage_rate": 20.997002}, {"year": 2019, "storage_rate": 26.42278}, {"year": 2019, "storage_rate": 27.892639}, {"year": 2020, "storage_rate": 30.43878}]
+
+    const drawChart = (chartData) => {
+        const width = 900;
+        const height = 600;
+        const marginTop = 20;
+        const marginRight = 30;
+        const marginBottom = 40;
+        const marginLeft = 40;
+
+        // Declare the x (horizontal position) scale.
+        const x = d3.scaleLinear([1995, 2020], [marginLeft, width - marginRight]);
+
+        // Declare the y (vertical position) scale.
+        // const y = d3.scaleLinear([0, 40], [height - marginBottom, marginTop]);
+        const y = d3.scaleLog()
+            .domain([0.07, d3.max(data, d => d.storage_rate)]) // Minimum value must be > 0
+            .range([height - marginBottom, marginTop]);
+
+        // Declare the line generator.
+        const line = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.storage_rate));
+
+        const area = d3.area()
+            .x(d => x(d.year))
+            .y0(height - marginBottom)
+            .y1(d => y(d.storage_rate));
+
+
+        // Create the SVG container.
+        const svg = d3.select("#project_1_figure_3")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", [0, 0, width, height])
+            .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+        // Add the x-axis.
+        svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`)
+            .call(d3.axisBottom(x).tickFormat(d3.format("d")).ticks(width / 80).tickSizeOuter(0))
+            .call(g => g.append("text")
+                .attr("x", width / 2)  // Center horizontally
+                .attr("y", marginBottom) // Position below x-axis
+                .attr("fill", "currentColor")
+                .attr("text-anchor", "start")
+                .style("font-size", "14px")
+                .style("fill", "black")
+                .style("font-weight", "bold")
+                .text("Year"))
+
+        // Add the y-axis, remove the domain line, add grid lines and a label.
+        svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(
+                d3.axisLeft(y)
+                    .ticks(5, "~s")           // Format ticks for log scale
+                    .tickFormat(d => {
+                        if (d === 0.1) return "0.1";
+                        if (d === 1) return "1";
+                        if (d === 10) return "10";
+                        return "";  // Default case
+                    }))
+            .call(g => g.append("text")
+                .attr("x", -height / 2)
+                .attr("y", -marginLeft + 10)
+                .attr("transform", `rotate(-90)`)
+                .attr("fill", "currentColor")
+                .attr("text-anchor", "start")
+                .style("font-size", "14px")
+                .style("fill", "black")
+                .style("font-weight", "bold")
+                .text("Storage Rate [Mt/year]"));
+
+        svg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .attr("stroke-width", 1.5)
+            .attr("d", line(chartData));
+
+        // Add Area
+        svg.append("path")
+            .attr("fill", "rgba(128, 128, 192, 1)")
+            .attr("d", area(chartData));
+
+        const tooltip = d3.select("#project_1_figure_3_container").append("div")
+            .style("position", "absolute")
+            .style("background", "white")
+            .style("border", "1px solid black")
+            .style("padding", "5px")
+            .style("border-radius", "5px")
+            .style("visibility", "hidden")
+            .style("font-size", "12px");
+
+        svg.selectAll("circle")
+            .data(chartData)
+            .enter().append("circle")
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.storage_rate))
+            .attr("r", 3)  // Dot size
+            .attr("fill", "rgba(50,50,50,1)")  // Dot color
+            .on("mouseover", (event, d) => {
+                if(d.year!=1996){
+                    tooltip.style("visibility", "visible")
+                    .html(`<div><div><b>Year:</b> ${d.year}</div> <div><b>Value:</b> ${d.storage_rate}</div></div>`);
+                }
+            })
+            .on("mousemove", (event) => {
+                tooltip.style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip.style("visibility", "hidden");
+            });
+    }
+    drawChart(data);
+</script>

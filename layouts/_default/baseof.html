@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+{{- partial "head.html" . -}}
+<body>
+    <div class="base-container">
+        <div class="base-header shadow-sm">
+            {{- partial "header.html" . -}}
+        </div>
+
+        <div id="content" class="base-content">
+            {{- block "main" . }}{{- end }}
+        </div>
+
+        <div class="base-footer mt-4">
+            {{- partial "footer.html" . -}}
+        </div>
+
+    </div>
+    {{- partial "scripts.html" . -}}
+</body>
+</html>

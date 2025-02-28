@@ -1,0 +1,55 @@
+.project-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.project-table th, .project-table td {
+    border: 1px solid rgb(189, 189, 189);
+    padding: 8px;
+}
+.project-table th {
+    background-color: #ebebeb;
+}
+
+.legend-btn {
+    padding: 0 4px;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+}
+
+.legend-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.legend-color {
+    margin-right: 8px;
+    max-width: 20px;
+    min-width: 20px;
+    max-height: 10px;
+    min-height: 10px;
+    border-radius: 5px
+}
+
+.legend-grp-header {
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.legend-grp-header:hover {
+    opacity: 0.6;    
+}
+
+.legend-grp-content {
+    padding: 12px;
+}
+
+.figure1-plot-container {
+    display: flex; 
+}
+
+@media (min-width: 1024px) {
+    .figure1-plot-container {
+        justify-content:center;
+    }
+}

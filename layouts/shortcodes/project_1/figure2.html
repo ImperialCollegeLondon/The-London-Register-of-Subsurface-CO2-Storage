@@ -1,0 +1,171 @@
+<div class="mt-5" style="overflow-x: auto;">
+    <div class="figure1-plot-container">
+        {{/* <div id="legend"></div> */}}
+        <figure class="figure">
+            <svg id="project_1_figure_2"></svg>
+        </figure>
+    </div>
+</div>
+<figcaption class="figure-caption" style="text-align: center;">
+    Figure 2: Plot comparing the compiled 2019 estimates of hybrid storage rate for 20 operational CCS projects.
+</figcaption>
+<script type="module">
+
+    const margin = { top: 20, right: 120, bottom: 20, left: 20 };
+
+    const options = {
+        shape: "rect",
+        style: "whole"
+    }
+
+    const isRect = options.shape === "rect";
+    const whole = options.style === "whole"
+
+    const padding = ({ x: 10, y: 40 });
+    const height = 400;
+    const width = 700;
+    const chartData = [{"id": "Sleipner", "metric": "storage_rate_hybrid", "value": 0.65, "n": 2, "p": 0.022495241391244165}, {"id": "Snohvit", "metric": "storage_rate_hybrid", "value": 0.7, "n": 2, "p": 0.02422564457518602}, {"id": "Quest", "metric": "storage_rate_hybrid", "value": 1.128, "n": 4, "p": 0.03903789582972833}, {"id": "Century", "metric": "storage_rate_hybrid", "value": 7.05, "n": 24, "p": 0.24398684893580208}, {"id": "Illinois", "metric": "storage_rate_hybrid", "value": 0.52, "n": 1, "p": 0.017996193112995332}, {"id": "Coffeyville", "metric": "storage_rate_hybrid", "value": 1.16, "n": 4, "p": 0.04014535386745112}, {"id": "Core", "metric": "storage_rate_hybrid", "value": 0.31, "n": 1, "p": 0.010728499740439525}, {"id": "ACTL", "metric": "storage_rate_hybrid", "value": 1.0, "n": 3, "p": 0.034608063678837175}, {"id": "Zhongyuan", "metric": "storage_rate_hybrid", "value": 0.1, "n": 1, "p": 0.0034608063678837177}, {"id": "Petrobras", "metric": "storage_rate_hybrid", "value": 4.6, "n": 16, "p": 0.159197092922651}, {"id": "group of 3 qatar + gordon + shute creek", "metric": "storage_rate_hybrid", "value": 7.8, "n": 27, "p": 0.26994289669492993}, {"id": "boundary dam", "metric": "storage_rate_hybrid", "value": 0.045, "n": 1, "p": 0.0015573628655476727}, {"id": "karamay", "metric": "storage_rate_hybrid", "value": 0.02, "n": 1, "p": 0.0006921612735767435}, {"id": "jilin", "metric": "storage_rate_hybrid", "value": 0.63, "n": 2, "p": 0.02180308011766742}, {"id": "Air Products", "metric": "storage_rate_hybrid", "value": 1.09, "n": 3, "p": 0.037722789409932525}, {"id": "GPSP", "metric": "storage_rate_hybrid", "value": 2.0, "n": 7, "p": 0.06921612735767435}, {"id": "arkalon", "metric": "storage_rate_hybrid", "value": 0.092, "n": 1, "p": 0.00318394185845302}]
+    const figure1Meta = [{ "id": "arkalon", "legend": "Arkalon", "color": "rgb(254,153,41)", "description": "arkalon", "category": 3, "country": "US", "storage_type": "EOR", "operator": "Farnsworth Unit " }, { "id": "GPSP", "legend": "GPSP", "color": "rgb(237,237,104)", "description": "GPSP", "category": 3, "country": "US/Canada", "storage_type": NaN, "operator": "Aquistore (A) & Weburn Midale Whitecap Resources (W)" }, { "id": "Air Products", "legend": "Air Products", "color": "rgb(70,127,194)", "description": "Air Products", "category": 2, "country": "US", "storage_type": "EOR", "operator": "Gulf Coast Denbury " }, { "id": "jilin", "legend": "Jilin", "color": "rgb(48,40,124)", "description": "jilin", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Jilin CNPC " }, { "id": "karamay", "legend": "Karamay", "color": "rgb(14,0,126)", "description": "karamay", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Karamay Dunhua" }, { "id": "boundary dam", "legend": "Boundary/Aquistore", "color": "rgb(37,0,249)", "description": "boundary dam", "category": 2, "country": "Canada", "storage_type": "EOR", "operator": "Aquistore (A) & Weburn Midale Whitecap Resources (W)" }, { "id": "group of 3 qatar + gordon + shute creek", "legend": "SC/Qatar/Gorgon", "color": "rgb(108,168,206)", "description": "group of 3 qatar + gordon + shute creek", "category": 2, "country": "Qatar/US/Australia", "storage_type": "Geological Storage/EOR ", "operator": "Chevron (C) & Exxon Mobile (EM)" }, { "id": "Petrobras", "legend": "Petrobras", "color": "rgb(143,197,216)", "description": "Petrobras", "category": 2, "country": "Brazil", "storage_type": "EOR", "operator": "Santos Basin Petrobras " }, { "id": "Zhongyuan", "legend": "Zhongyuan", "color": "rgb(170,212,227)", "description": "Zhongyuan", "category": 2, "country": "China", "storage_type": "EOR", "operator": "Zhongyuan Sinopec " }, { "id": "ACTL", "legend": "ACTL", "color": "rgb(174,217,68)", "description": "ACTL", "category": 1, "country": NaN, "storage_type": NaN, "operator": NaN }, { "id": "Core", "legend": "Core", "color": "rgb(37,57,33)", "description": "Core", "category": 1, "country": "US", "storage_type": "EOR", "operator": "Core Energy" }, { "id": "Coffeyville", "legend": "Coffeyville", "color": "rgb(68,117,56)", "description": "Coffeyville", "category": 1, "country": "US", "storage_type": "EOR", "operator": "North Burbank Unit " }, { "id": "Illinois", "legend": "Illinois", "color": "rgb(92,161,73)", "description": "Illinois", "category": 1, "country": "US", "storage_type": "Geological Storage ", "operator": "Illinois ADM " }, { "id": "Century", "legend": "Century", "color": "rgb(112,146,81)", "description": "Century", "category": 1, "country": "US", "storage_type": "EOR", "operator": "Occidental Petroleum/Denver Unit/Hobbs Unit " }, { "id": "Quest", "legend": "Quest", "color": "rgb(146,183,85)", "description": "Quest", "category": 1, "country": "Canada", "storage_type": "Geological Storage ", "operator": "Quest Shell " }, { "id": "Snohvit", "legend": "Snohvit", "color": "rgb(193,228,162)", "description": "Snohvit", "category": 1, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor" }, { "id": "Sleipner", "legend": "Sleipner", "color": "rgb(205,239,216)", "description": "Sleipner", "category": 1, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor" }];
+    const colorScheme = figure1Meta.map(x => x.color);
+    const waffleSize = whole ? width < height ? width : height : 150;
+
+    const drawChart = () => {
+        const svg = d3.select("#project_1_figure_2")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .style("cursor", "default")
+            .attr("viewBox", [0, 0, width, height]);
+
+        const g = svg.selectAll(".waffle")
+            .data(waffles)
+            .join("g")
+            .attr("class", "waffle");
+
+        if (!whole) {
+            const numPerRow = Math.floor(width / (waffleSize + padding.x));
+            g.attr("transform", (d, i) => {
+                const r = Math.floor(i / numPerRow);
+                const c = i - r * numPerRow;
+                return `translate(${c * (waffleSize + padding.x)},${r * (waffleSize + padding.y)})`
+            });
+        }
+
+        const cellSize = scale.bandwidth();
+        const half = cellSize / 2;
+        const cells = g.append("g")
+            .selectAll(options.shape)
+            .data(d => d)
+            .join(options.shape)
+            .attr("fill", d => d.index === -1 ? "#ddd" : color(d.meta.id))
+            .attr("stroke", "rgba(156,156,156,1)")
+            .attr("stroke-width", 1);
+
+        if (isRect) {
+            cells.attr("x", d => scale(d.x))
+                .attr("y", d => whole ? 0 : scale(d.y))
+                .attr("width", cellSize).attr("height", cellSize)
+        }
+        else {
+            cells.attr("cx", d => scale(d.x) + half)
+                .attr("cy", d => whole ? 0 : scale(d.y) + half)
+                .attr("r", half);
+        }
+
+        if (whole) {
+            {
+                {/*  cells.append("title").text(d => {
+                const cd = chartData[d.index];
+                return `${cd.territory}\n${toCurrency(cd.profit)} (${cd.ratio.toFixed(1)}%)`;
+            });  */}
+            }
+
+            cells.transition()
+                .attr(isRect ? "y" : "cy", d => scale(d.y) + (isRect ? 0 : half));
+            svg.transition().delay(550)
+                .on("end", () => drawLegend(svg, cells));
+        }
+        else {
+            g.append("text")
+                .style("font-size", 20)
+                .style("font-weight", "bold")
+                .attr("dy", "1.5em")
+                .attr("text-anchor", "middle")
+                .attr("fill", (d, i) => color(i))
+                .attr("transform", `translate(${waffleSize / 2},0)`)
+                .text((d, i) => `${chartData[i].n.toFixed(0)}%`);
+
+            g.append("g")
+                .attr("transform", `translate(0,${waffleSize + padding.y / 2.5})`)
+                .call(g => g.append("text").text((d, i) => chartData[i].id))
+                .call(g => g.append("text").attr("dy", "1em").text((d, i) => toCurrency(chartData[i].profit)));
+        }
+
+        return svg.node();
+    }
+
+    const drawLegend = (svg, cells) => {
+        const legend = svg.selectAll(".legend")
+            .data(chartData.map(d => d.id))
+            .join("g")
+            .attr("opacity", 1)
+            .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 20})`)
+            .on("mouseover", highlight)
+            .on("mouseout", restore);
+
+        legend.append("rect")
+            .attr("rx", 5).attr("ry", 5)
+            .attr("width", 20).attr("height", 10)
+            .attr("fill", (d, i) => {
+                return color(d)
+            });
+
+        legend.append("text")
+            .attr("dx", 40)
+            .attr("alignment-baseline", "hanging")
+            .text((d, i) => {
+                return `${figure1Meta.find(x => x.id == d).legend} (${(chartData.find(x => x.id == d).p*100).toFixed(2)}%)`
+            });
+
+        function highlight(e, d, restore) {
+            const i = legend.nodes().indexOf(e.currentTarget);
+            cells.transition().duration(500)
+                .attr("fill", d => d.index === i ? color(d.meta.id) : "#ccc");
+        }
+
+        function restore() {
+            cells.transition().duration(500).attr("fill", d => color(d.meta.id))
+        }
+    }
+
+    const sequence = (length) => Array.apply(null, { length: length }).map((d, i) => i);
+    const toCurrency = num => d3.format("$,.2f")(num);
+    { {/*  const color = d3.scaleOrdinal(d3.schemeTableau10).domain(sequence(chartData.length))  */ } }
+    const color = (id) => {
+        return figure1Meta.find(x => x.id == id).color
+        { {/*  return colorScheme[id]  */ } }
+    };
+    const scale = d3.scaleBand()
+        .domain(sequence(10))
+        .range([0, waffleSize])
+        .padding(0.1)
+
+    const waffles = [];
+    const max = chartData.length;
+    let index = 0, curr = 1,
+        accu = Math.round(chartData[0].n), waffle = [];
+
+    for (let y = 9; y >= 0; y--)
+        for (let x = 0; x < 10; x++) {
+            if (curr > accu && index < max) {
+                let r = Math.round(chartData[++index].n);
+                while (r === 0 && index < max) {
+                    r = Math.round(chartData[++index].n);
+                }
+                accu += r;
+            }
+            waffle.push({ x, y, index, meta: chartData[index] });
+            curr++;
+        }
+    waffles.push(waffle);
+    drawChart()
+</script>
