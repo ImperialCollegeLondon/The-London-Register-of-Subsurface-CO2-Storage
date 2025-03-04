@@ -1,6 +1,14 @@
 ---
-title: ""
-date: 2025-02-08T20:27:56Z
+title: "Home"
+date: 2025-03-04T15:55:56Z
 draft: false
-kind: home
+layout: single
 ---
+
+{{< london_co2_register/table1 >}}
+
+{{< london_co2_register/figure1 >}}
+
+{{< london_co2_register/figure2 >}}
+
+{{< london_co2_register/figure3 >}}

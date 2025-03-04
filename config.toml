@@ -5,44 +5,11 @@ title = 'The London Register of Subsurface CO2 Storage'
 [menus]
 
 [[menus.main]]
-name = 'Home'
+name = 'London CO2 Register'
 pageRef = '/'
 weight = 10
 
 [[menus.main]]
-name = 'Project'
+name = 'About the Project'
 pageRef = '/project'
 weight = 20
-
-[[menus.main]]
-name = 'Database'
-pageRef = '/database'
-weight = 21
-
-[[menus.main]]
-identifier = 'team'
-name = 'Team and Partners'
-pageRef = '/team'
-weight = 30
-
-[[menus.main]]
-name = 'News'
-pageRef = '/news'
-weight = 40
-
-[[menus.main]]
-name = 'Event'
-pageRef = '/event'
-weight = 50
-
-[[menus.main]]
-identifier = 'publication'
-name = 'Publication'
-pageRef = '/publication'
-weight = 60
-
-[[menus.main]]
-identifier = 'contact'
-name = 'Contact Us'
-pageRef = '/contact'
-weight = 70
