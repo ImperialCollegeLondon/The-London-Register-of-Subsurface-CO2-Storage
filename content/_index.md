@@ -5,6 +5,10 @@ draft: false
 layout: single
 ---
 
+{{< london_co2_register/figure4_test >}}
+
+---
+
 {{< london_co2_register/table1 >}}
 
 ---
@@ -15,4 +19,8 @@ layout: single
 
 {{< london_co2_register/figure2 >}}
 
-<!-- {{< london_co2_register/figure3 >}} -->
+---
+
+{{< london_co2_register/figure4 >}}
+
+

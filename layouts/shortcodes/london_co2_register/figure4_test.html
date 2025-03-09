@@ -1,0 +1,101 @@
+<svg width="800" height="500"></svg>
+<script type="module">
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 },
+        width = 800 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    const svg = d3.select("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Sample Data
+    const data = [
+        { date: new Date(2024, 0, 1), valueA: 10, valueB: 20, valueC: 15 },
+        { date: new Date(2024, 0, 2), valueA: 30, valueB: 25, valueC: 20 },
+        { date: new Date(2024, 0, 3), valueA: 20, valueB: 30, valueC: 25 },
+        { date: new Date(2024, 0, 4), valueA: 40, valueB: 35, valueC: 30 },
+        { date: new Date(2024, 0, 5), valueA: 35, valueB: 40, valueC: 35 },
+        { date: new Date(2024, 0, 6), valueA: 50, valueB: 45, valueC: 40 },
+        { date: new Date(2024, 0, 7), valueA: 60, valueB: 50, valueC: 45 }
+    ];
+
+    // Stack data
+    const keys = ["valueA", "valueB", "valueC"];
+    const stack = d3.stack().keys(keys);
+    const stackedData = stack(data);
+
+    // Scales
+    const x = d3.scaleTime()
+        .domain(d3.extent(data, d => d.date))
+        .range([0, width]);
+
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(stackedData.flat(2))]) // Flatten stacked data
+        .nice()
+        .range([height, 0]);
+
+    const color = d3.scaleOrdinal()
+        .domain(keys)
+        .range(["steelblue", "orange", "green"]);
+
+    // Area generator
+    const area = d3.area()
+        .x(d => x(d.data.date))
+        .y0(d => y(d[0]))
+        .y1(d => y(d[1]));
+
+    // Line generator
+    const line = d3.line()
+        .x(d => x(d.data.date))
+        .y(d => y(d[1]));
+
+    // Draw stacked areas
+    svg.selectAll("path.area")
+        .data(stackedData)
+        .join("path")
+        .attr("class", "area")
+        .attr("fill", d => color(d.key))
+        .attr("opacity", 0.6)
+        .attr("d", area);
+
+    // // Draw solid boundary lines
+    // svg.selectAll("path.line")
+    //     .data(stackedData)
+    //     .join("path")
+    //     .attr("class", "line")
+    //     .attr("fill", "none")
+    //     .attr("stroke", "black")
+    //     .attr("stroke-width", 2)
+    //     .attr("d", line);
+
+    // Apply different dashed segments to each group's line
+    const dashedPatterns = {
+        "valueA": "dotted", // Dotted (5,5)
+        "valueB": "dashed", // Dashed (8,4)
+        "valueC": "long-dashed" // Long dashed (12,6)
+    };
+
+    stackedData.forEach(series => {
+        const key = series.key;
+        const dashClass = dashedPatterns[key];
+
+        // Split the dataset into dashed sections (first 4 points solid, last 3 dashed)
+        svg.append("path")
+            .datum(series.slice(4)) // Last 3 points
+            .attr("class", dashClass) // Apply unique dash pattern
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+            .attr("d", line);
+    });
+
+    // Axes
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+</script>

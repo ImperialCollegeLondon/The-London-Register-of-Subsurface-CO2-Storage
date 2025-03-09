@@ -242,8 +242,8 @@
                 .transition()
                 .duration(50)
                 .attr("opacity", 0.5)
-                .attr("stroke", "rgba(200,200,200,1)")
-                .attr("stroke-width", 1)
+                // .attr("stroke", "rgba(200,200,200,1)")
+                // .attr("stroke-width", 0)
             tooltip
                 .attr("x", width - 80)
                 .attr("y", 100)
@@ -255,8 +255,8 @@
                 .transition()
                 .duration(50)
                 .attr("opacity", 1)
-                .attr("stroke", "rgba(156,156,156,1)")
-                .attr("stroke-width", 1)
+                // .attr("stroke", "rgba(156,156,156,1)")
+                // .attr("stroke-width", 1)
         }
 
         // Append a group for each series, and a rect for each element in the series.
@@ -267,8 +267,8 @@
             // .attr("fill", d => figure1Color[d.key])
             .attr("fill", d => figure1Meta.find(x => x.id == d.key).color)
             // .style("fill-opacity", 0.8)
-            .style("stroke", "rgba(156,156,156,1)")
-            .style("stroke-width", 1)
+            // .style("stroke", "rgba(156,156,156,1)")
+            // .style("stroke-width", 1)
             .selectAll("rect")
             .data(D => D.map(d => (d.key = D.key, d)))
             .join("rect")

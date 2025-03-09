@@ -65,8 +65,8 @@
             .data(d => d)
             .join(options.shape)
             .attr("fill", d => d.index === -1 ? "#ddd" : color(d.meta.id))
-            .attr("stroke", "rgba(156,156,156,1)")
-            .attr("stroke-width", 1);
+            // .attr("stroke", "rgba(156,156,156,1)")
+            // .attr("stroke-width", 1);
 
         if (isRect) {
             cells.attr("x", d => scale(d.x))
