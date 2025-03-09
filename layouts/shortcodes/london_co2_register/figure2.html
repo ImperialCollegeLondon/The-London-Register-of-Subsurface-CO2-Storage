@@ -28,8 +28,8 @@
         const isRect = options.shape === "rect";
         const whole = options.style === "whole"
         const padding = ({ x: 10, y: 40 });
-        const height = 400;
-        const width = 700;
+        const height = 600;
+        const width = 1000;
         const waffleSize = whole ? width < height ? width : height : 150;
 
         const sequence = (length) => Array.apply(null, { length: length }).map((d, i) => i);
@@ -116,7 +116,7 @@
             .data(chartData.map(d => d.id))
             .join("g")
             .attr("opacity", 1)
-            .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 20})`)
+            .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 15})`)
             .on("mouseover", highlight)
             .on("mouseout", restore);
 
@@ -128,10 +128,11 @@
             });
 
         legend.append("text")
-            .attr("dx", 40)
+            .attr("dx", "30")
+            .attr("font-size", "10px")
             .attr("alignment-baseline", "hanging")
             .text((d, i) => {
-                return `${figure1Meta.find(x => x.id == d).name} (${(chartData.find(x => x.id == d).p * 1000).toFixed(2)}%)`
+                return `${figure1Meta.find(x => x.id == d).name} (${(chartData.find(x => x.id == d).p * 100).toFixed(2)}%)`
             });
 
         function highlight(e, d, restore) {
