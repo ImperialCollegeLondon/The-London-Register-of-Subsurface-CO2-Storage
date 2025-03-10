@@ -4,13 +4,13 @@
 
 @media (min-width: 768px) {
     .table1 td, .table1 tr{
-        min-width: 100px;
+        /* min-width: 100px; */
     }
 }
 
 @media (min-width: 1024px) {
     .table1 td, .table1 tr{
-        min-width: 200px;
+        /* min-width: 200px; */
     }
 }
 

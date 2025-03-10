@@ -1,0 +1,122 @@
+<div class="container mt-5">
+    <h3 style="flex: 1; text-align: center;">
+        Summary of Annual CO₂ Storage Volumes for 37 Projects (2020–2023)
+    </h3>
+
+    <div style="flex: 1; text-align: center;">
+        Publication Date: 22-Feb-25
+    </div>
+
+    <div class="mt-4" style="flex: 1; text-align: center;">
+        This table summary reflects only the reported annual volume of CO₂ storage or sequestration activities (measured
+        in Megatonnes per Year, Mt).
+    </div>
+
+    <table border="1" class="table1 mt-2">
+        <thead class="table-header">
+            <tr>
+                <th></th>
+                <th>2020</th>
+                <th>2021</th>
+                <th>2022</th>
+                <th>2023</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+    </table>
+
+    <template id="table-row-country-template">
+        <tr class="table-row-country-name">
+            <td class="table-cell-country-name"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <template id="table-row-record-template">
+        <tr class="table-row-record-tr">
+            <td class="table-cell-record-name"></td>
+            <td class="table-cell-record-2020"></td>
+            <td class="table-cell-record-2021"></td>
+            <td class="table-cell-record-2022"></td>
+            <td class="table-cell-record-2023"></td>
+        </tr>
+    </template>
+
+    <div class="mt-3">
+        Download the table data here. This file includes the full global CO₂ storage database, data sources, reporting
+        standards, and the update log.
+    </div>
+
+    <div class="mt-2">
+        <a class="team-icon" href="https://zenodo.org/records/14945541" target="_blank">
+            <i class="fa-solid fa-up-right-from-square"></i>
+            https://zenodo.org/records/14945541
+        </a>
+    </div>
+</div>
+<script>
+
+    const formatValue = (val) => {
+        if (val == "-1") {
+            return "*"
+        } else if (val == "-2") {
+            return "__&sup2"
+        } else if (typeof val == "number") {
+            return val.toFixed(3)
+        } else {
+            return val;
+        }
+    }
+
+    const data = { "Norway": [{ "Facility": "Sleipner ", "Footnote": null, "type": "record", "2020": 0.506, "2021": 0.322, "2022": 0.115, "2023": -1.0, "Country": "Norway" }, { "Facility": "Snohvit ", "Footnote": null, "type": "record", "2020": 0.422, "2021": 0.0, "2022": 0.402, "2023": -1.0, "Country": "Norway" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 0.928, "2021": 0.322, "2022": 0.517, "2023": null, "Country": "Norway" }], "United Arab Emirates": [{ "Facility": "ADNOC Al Reyadah", "Footnote": "1", "type": "record", "2020": 0.8, "2021": 0.8, "2022": 0.8, "2023": 0.8, "Country": "United Arab Emirates" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 0.8, "2021": 0.8, "2022": 0.8, "2023": 0.8, "Country": "United Arab Emirates" }], "Australia": [{ "Facility": "Chevron Gorgon", "Footnote": "5", "type": "record", "2020": 2.171, "2021": 1.656, "2022": 1.72, "2023": 1.594, "Country": "Australia" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 2.171, "2021": 1.656, "2022": 1.72, "2023": 1.594, "Country": "Australia" }], "Brazil": [{ "Facility": "Petrobras Santos Basin Pre-Salt Oil Field", "Footnote": null, "type": "record", "2020": 7.0, "2021": 8.7, "2022": 10.6, "2023": 13.0, "Country": "Brazil" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 7.0, "2021": 8.7, "2022": 10.6, "2023": 13.0, "Country": "Brazil" }], "Canada": [{ "Facility": "Alberta Carbon Trunk Line (ACTL) ", "Footnote": null, "type": "record", "2020": 0.933, "2021": 1.24, "2022": 1.034, "2023": 1.493, "Country": "Canada" }, { "Facility": "Quest ", "Footnote": null, "type": "record", "2020": 0.941, "2021": 1.055, "2022": 0.971, "2023": 1.003, "Country": "Canada" }, { "Facility": "Aquistore", "Footnote": null, "type": "record", "2020": 0.37, "2021": 0.45, "2022": 0.5, "2023": -1.0, "Country": "Canada" }, { "Facility": "Weyburn-Midale", "Footnote": null, "type": "record", "2020": 1.993, "2021": 1.772, "2022": 1.922, "2023": -1.0, "Country": "Canada" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 4.237, "2021": 4.517, "2022": 4.427, "2023": 2.496, "Country": "Canada" }], "China": [{ "Facility": "ShengLi  Oilfield", "Footnote": null, "type": "record", "2020": 0.298, "2021": 0.308, "2022": 0.657, "2023": 0.472, "Country": "China" }, { "Facility": "Zhongyuan Oilfield", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": -2.0, "Country": "China" }, { "Facility": "Yanchang Integrated Demonstration", "Footnote": "1", "type": "record", "2020": 0.05, "2021": 0.05, "2022": 0.05, "2023": 0.05, "Country": "China" }, { "Facility": "ShanDong ZouCheng Plant", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": 0.001, "2023": 0.001, "Country": "China" }, { "Facility": "Xinjiang Ordos Basin", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": -2.0, "Country": "China" }, { "Facility": "ShanXi Datong CO2 Sequestration Project", "Footnote": "1,3", "type": "record", "2020": -2.0, "2021": -2.0, "2022": 0.001, "2023": 0.001, "Country": "China" }, { "Facility": "Karamay Dunhua", "Footnote": "1,3", "type": "record", "2020": 0.1, "2021": 0.1, "2022": 0.1, "2023": 0.1, "Country": "China" }, { "Facility": "Jilin Oilfield", "Footnote": null, "type": "record", "2020": 1.9, "2021": 2.0, "2022": 2.77, "2023": 1.59, "Country": "China" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 2.348, "2021": 2.458, "2022": 3.579, "2023": 2.214, "Country": "China" }], "Qatar": [{ "Facility": "Qatar LNG", "Footnote": "5", "type": "record", "2020": 0.63, "2021": 0.62, "2022": 0.59, "2023": 0.68, "Country": "Qatar" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 0.63, "2021": 0.62, "2022": 0.59, "2023": 0.68, "Country": "Qatar" }], "Saudi Arabia": [{ "Facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "Footnote": "1,3", "type": "record", "2020": 0.114, "2021": 0.114, "2022": -2.0, "2023": -1.0, "Country": "Saudi Arabia" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 0.114, "2021": 0.114, "2022": -2.0, "2023": -1.0, "Country": "Saudi Arabia" }], "USA": [{ "Facility": "Denver Unit / Wasson San Andres Field", "Footnote": null, "type": "record", "2020": 4.95, "2021": 2.61, "2022": 3.0, "2023": 3.67, "Country": "USA" }, { "Facility": "Illinois Inustrial CCS ", "Footnote": null, "type": "record", "2020": 0.52, "2021": 0.444, "2022": 0.429, "2023": 0.544, "Country": "USA" }, { "Facility": "North Burbank Unit", "Footnote": "3", "type": "record", "2020": 0.66, "2021": 0.714, "2022": 0.652, "2023": 0.631, "Country": "USA" }, { "Facility": "Core Energy  Otsego County EOR Operations", "Footnote": null, "type": "record", "2020": 0.213, "2021": 0.233, "2022": 0.311, "2023": 0.261, "Country": "USA" }, { "Facility": "Shute Creek", "Footnote": "5", "type": "record", "2020": 0.418, "2021": 0.425, "2022": 0.395, "2023": 0.435, "Country": "USA" }, { "Facility": "30-30 Gas Plant", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": 0.012, "2023": 0.01, "Country": "USA" }, { "Facility": "Illinois Industrial Carbon Capture and Sequestration Project", "Footnote": null, "type": "record", "2020": 0.522, "2021": 0.52, "2022": 0.429, "2023": 0.544, "Country": "USA" }, { "Facility": "Barnett RDC Well No. 1", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": 0.008, "Country": "USA" }, { "Facility": "Blue Flint CO2 Storage Project", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": 0.03, "Country": "USA" }, { "Facility": "Campo Viejo Gas Processing Plant", "Footnote": null, "type": "record", "2020": null, "2021": null, "2022": 0.077, "2023": 0.01, "Country": "USA" }, { "Facility": "Camrick Unit", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": 0.034, "Country": "USA" }, { "Facility": "Hobbs Field", "Footnote": null, "type": "record", "2020": 2.139, "2021": 1.706, "2022": 2.189, "2023": 5.198, "Country": "USA" }, { "Facility": "Petra Nova West Ranch", "Footnote": null, "type": "record", "2020": null, "2021": 0.0, "2022": 0.0, "2023": 0.36, "Country": "USA" }, { "Facility": "Red Trail Energy, LLC", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": 0.082, "2023": 0.166, "Country": "USA" }, { "Facility": "Red Hills Gas Processing Plant", "Footnote": null, "type": "record", "2020": null, "2021": 0.0, "2022": 0.024, "2023": 0.022, "Country": "USA" }, { "Facility": "Seminole East Field (SEF)", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": 0.033, "Country": "USA" }, { "Facility": "Seminole San Andres Unit", "Footnote": null, "type": "record", "2020": -2.0, "2021": -2.0, "2022": -2.0, "2023": 3.933, "Country": "USA" }, { "Facility": "West Seminole San Andres Unit", "Footnote": null, "type": "record", "2020": null, "2021": 0.816, "2022": 0.769, "2023": 0.736, "Country": "USA" }, { "Facility": "National Total", "Footnote": null, "type": "national_total", "2020": 9.422, "2021": 7.467, "2022": 8.369, "2023": 16.624, "Country": "USA" }], "TOTAL": [{ "Facility": "Total-using above disclosed data", "Footnote": null, "type": "total_disclose", "2020": 27.65, "2021": 26.654, "2022": 30.602, "2023": 37.409, "Country": "TOTAL" }, { "Facility": "Total-using data from different recources", "Footnote": "4", "type": "total_other", "2020": 31.521, "2021": 30.99, "2022": 34.994, "2023": 41.818, "Country": "TOTAL" }] }
+    const rowTemplate = document.getElementById('table-row-record-template');
+    const tableBody = document.getElementById('table-body');
+    Object.entries(data).forEach(([country, countryRecords]) => {
+        const countryRowTemplate = document.getElementById('table-row-country-template');
+        const countryRowNode = countryRowTemplate.content.cloneNode(true);
+        countryRowNode.class = "table-row-country-name"
+        countryRowNode.id = `country-name-${country}`
+
+        if (country != "TOTAL") {
+            const countryRowName = countryRowNode.querySelector('.table-cell-country-name')
+            countryRowName.textContent = country;
+            tableBody.appendChild(countryRowNode);
+        }
+
+        countryRecords.forEach((item) => {
+            const recordRowTemplate = document.getElementById('table-row-record-template');
+            const recordRowNode = recordRowTemplate.content.cloneNode(true);
+
+            if (item.type == "national_total") {
+                const recordRowTr = recordRowNode.querySelector('.table-row-record-tr')
+                recordRowTr.classList.add("table-row-national-total")
+            } else if (item.type == "total_disclose") {
+                const recordRowTr = recordRowNode.querySelector('.table-row-record-tr')
+                recordRowTr.classList.add("table-row-total-disclose")
+            } else if (item.type == "total_other") {
+                const recordRowTr = recordRowNode.querySelector('.table-row-record-tr')
+                recordRowTr.classList.add("table-row-total-other")
+            }
+            recordRowNode.id = `${country}-${item.Facility}`
+
+            const recordRowName = recordRowNode.querySelector('.table-cell-record-name')
+            if (item.Footnote) {
+                recordRowName.innerHTML = `${item.Facility}<sup>${item.Footnote}</sup>`;
+            } else {
+                recordRowName.textContent = item.Facility;
+            }
+
+            [2020, 2021, 2022, 2023].forEach(year => {
+                const recordRowYear = recordRowNode.querySelector(`.table-cell-record-${year}`)
+                recordRowYear.innerHTML = formatValue(item[year]);
+            })
+
+            tableBody.appendChild(recordRowNode);
+        })
+    })
+</script>
