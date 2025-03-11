@@ -31,10 +31,14 @@
         .domain(d3.extent(data, d => d.date))
         .range([0, width]);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(stackedData.flat(2))]) // Flatten stacked data
-        .nice()
+    const y = d3.scaleLog()
+        .domain([0.07, d3.max(stackedData.flat(2))]) // Minimum value must be > 0
         .range([height, 0]);
+
+    // const y = d3.scaleLinear()
+    //     .domain([0, d3.max(stackedData.flat(2))]) // Flatten stacked data
+    //     .nice()
+    //     .range([height, 0]);
 
     const color = d3.scaleOrdinal()
         .domain(keys)
