@@ -1,5 +1,10 @@
 .table1 td, .table1 tr{
-    padding: 4px 8px;
+    padding: 1px 4px;
+    border-bottom: solid 1px rgb(240, 240, 240);
+}
+
+.table1 th {
+    padding: 2px;
 }
 
 @media (min-width: 768px) {

@@ -14,3 +14,7 @@ layout: single
 ---
 
 {{< london_co2_register/figure2 >}}
+
+---
+
+{{< london_co2_register/figure3 >}}
