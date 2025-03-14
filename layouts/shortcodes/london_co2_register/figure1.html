@@ -1,13 +1,14 @@
 <div class="mt-5" style="overflow-x: auto;">
+    <div id="project_1_figure_1_tooltip"></div>
     <div class="figure1-plot-container">
+        <svg id="project_1_figure_1"></svg>
         <div id="legend"></div>
-        <figure class="figure">
-            <svg id="project_1_figure_1"></svg>
-        </figure>
     </div>
 </div>
+
 <figcaption class="figure-caption" style="text-align: center;">
-    Figure 1: Plot comparing the compiled annual estimates of individual, national and global CO2 storage rate for the operational CCS projects.
+    Figure 1: Plot comparing the compiled annual estimates of individual, national and global CO2
+    storage rate for the operational CCS projects.
 </figcaption>
 
 <template id="legend-grp-template">
@@ -180,8 +181,8 @@
     })
 
     const plot = () => {
-        const margin = { top: 20, right: 120, bottom: 20, left: 20 };
-        const width = 1200 - margin.left - margin.right;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const width = 1000 - margin.left - margin.right;
         const height = 800 - margin.top - margin.bottom;
 
         const series = d3.stack()
@@ -190,7 +191,7 @@
             (d3.index(data, d => d.year, d => d.id)); // group by stack then series key
 
         const x = d3.scaleBand()
-            .domain(d3.groupSort(data,  () => 0, d => d.year))
+            .domain(d3.groupSort(data, () => 0, d => d.year))
             .range([margin.left, width - margin.right])
             .padding(0.1);
 
@@ -206,56 +207,37 @@
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        const tooltip = d3.select("#project_1_figure_1")
-            .append("foreignObject")
-            .attr("width", "200")
-            .attr("height", "400")
-        const tooltipDiv = tooltip
-            .append('xhtml:div')
+        const tooltip = d3.select("#project_1_figure_1_tooltip").append("div")
+            .style("position", "absolute")
+            .style("background", "rgba(255,255,255,0.9)")
+            .style("border", "1px solid black")
+            .style("padding", "5px")
+            .style("border-radius", "5px")
+            .style("visibility", "hidden")
+            .style("font-size", "12px");
 
         // Three function that change the tooltip when user hover / move / leave a cell
         const mouseover = function (d) {
             const subgroupName = d3.select(this.parentNode).datum().key;
             const year = d.target.__data__.data[0];
             const subgroupValue = figure1Data.find(x => x.id == subgroupName && x.year == year);
-            // tooltip
-            //     .text(subgroupName + ":" + subgroupValue?.value)
-            //     .style("opacity", 1)
             const toolTipDivContent = buildToolTipDiv(subgroupName, year, subgroupValue?.value)
-            tooltipDiv
-                // .html(subgroupName + ":" + subgroupValue?.value)
-                .html(toolTipDivContent)
-                .style("background", "#FFFFFF")
-                .style("padding", "8px 8px 8px 8px")
-                .style("border", "solid 1px #000000")
-                .style("opacity", 0.8)
-            tooltip.style("opacity", 1)
+            tooltip.style("visibility", "visible").html(toolTipDivContent)
         }
-        const mousemove = function (d) {
-
-            //            tooltip
-            //              .attr("x", (d3.pointer(d)[0] + 90)) // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-            //            .attr("y", (d3.pointer(d)[1]))
-
+        const mousemove = function (event) {
             d3.select(this)
                 .transition()
                 .duration(50)
                 .attr("opacity", 0.5)
-                // .attr("stroke", "rgba(200,200,200,1)")
-                // .attr("stroke-width", 0)
-            tooltip
-                .attr("x", width - 80)
-                .attr("y", 100)
+            tooltip.style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
         }
         const mouseleave = function (d) {
-            tooltip
-                .style("opacity", 0)
             d3.select(this)
                 .transition()
                 .duration(50)
                 .attr("opacity", 1)
-                // .attr("stroke", "rgba(156,156,156,1)")
-                // .attr("stroke-width", 1)
+            tooltip.style("visibility", "hidden");
         }
 
         // Append a group for each series, and a rect for each element in the series.
@@ -263,11 +245,7 @@
             .selectAll()
             .data(series)
             .join("g")
-            // .attr("fill", d => figure1Color[d.key])
             .attr("fill", d => figure1Meta.find(x => x.id == d.key).color)
-            // .style("fill-opacity", 0.8)
-            // .style("stroke", "rgba(156,156,156,1)")
-            // .style("stroke-width", 1)
             .selectAll("rect")
             .data(D => D.map(d => (d.key = D.key, d)))
             .join("rect")
@@ -278,20 +256,18 @@
             .on("mouseover", mouseover)
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave)
-        // .append("title")
-        // .text(d => `${d.data[0]} ${d.key}\n${formatValue(d.data[1].get(d.key).population)}`)
 
         // Append the horizontal axis.
         svg.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(d3.axisBottom(x).tickSizeOuter(0))
-            .call(g => g.selectAll(".domain").remove());
+            // .call(g => g.selectAll(".domain").remove());
 
         // Append the vertical axis.
         svg.append("g")
             .attr("transform", `translate(${margin.left},0)`)
             .call(d3.axisLeft(y).ticks(null, "s"))
-            .call(g => g.selectAll(".domain").remove());
+            // .call(g => g.selectAll(".domain").remove());
     }
 
     plot();
