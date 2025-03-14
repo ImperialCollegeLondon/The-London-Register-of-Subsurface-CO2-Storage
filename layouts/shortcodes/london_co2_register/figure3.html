@@ -124,7 +124,7 @@
             .attr("r", 3)
             .on("mouseover", (event, d) => {
                 tooltip.style("visibility", "visible")
-                    .html(`<div><div><b>Year:</b> ${d.data.year}</div> <div><b>Value:</b> ${d[1]}</div></div>`);
+                    .html(`<div><div><b>Year:</b> ${d.data.year}</div> <div><b>Value:</b> ${d[1].toFixed(2)}</div></div>`);
             })
             .on("mousemove", (event) => {
                 tooltip.style("top", (event.pageY - 10) + "px")
