@@ -37,18 +37,18 @@ social = [
 ]
 
 
-[[member]]
-name = "Jinshuai Ma"
-avatar = "team-ma.jpg"
-role = "Technical Support"
-position = [
-    "Research Engineer, Data Science Institute, London School of Economics and Political Science, UK",
-]
-social = [
-    { id = "linkedin", icon = "linkedin", icon_pack = "fab", link = "https://www.linkedin.com/in/jinshuai-ma-b19043145/" },
-    { id = "email", icon = "envelope", icon_pack = "fa", link = "j.ma23@lse.ac.uk" },
-    { id = "github", icon = "github", icon_pack = "fab", link = "https://github.com/Mayazure" },
-]
+# [[member]]
+# name = "Jinshuai Ma"
+# avatar = "team-ma.jpg"
+# role = "Technical Support"
+# position = [
+#     "Research Engineer, Data Science Institute, London School of Economics and Political Science, UK",
+# ]
+# social = [
+#     { id = "linkedin", icon = "linkedin", icon_pack = "fab", link = "https://www.linkedin.com/in/jinshuai-ma-b19043145/" },
+#     { id = "email", icon = "envelope", icon_pack = "fa", link = "j.ma23@lse.ac.uk" },
+#     { id = "github", icon = "github", icon_pack = "fab", link = "https://github.com/Mayazure" },
+# ]
 
 [partner]
-text = "We are proud to collaborate with leading international organizations, top universities, and key industry stakeholders on the London CO₂ Storage Register initiative. Together, we are driving innovation and sustainability in carbon storage for a greener future."
+text = "This initiative, funded by the UK Royal Academy of Engineers, and supported by a consortium of stakeholders from academia, industry, and government obtains data directly from operators, and publicly available information, providing a standardised register of annual stored amounts of CO₂"

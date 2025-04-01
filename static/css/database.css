@@ -5,24 +5,8 @@
     color: rgb(255,255,255);
 }
 
-.table-row-country-name {
-    background-color: rgb(208,208,208);
-    font-weight: bold;
-}
-
-.table-row-national-total {
-    background-color: rgb(218,242,208);
-    font-weight: bold;
-}
-
 .table-row-total-disclose {
     background-color: rgb(39,83,23);
-    font-weight: bold;
-    color: rgb(255,255,255);
-}
-
-.table-row-total-other {
-    background-color: rgb(0,112,192);
     font-weight: bold;
     color: rgb(255,255,255);
 }
@@ -40,16 +24,16 @@
 }
 
 .table1-number-cell {
-    min-width: 70px;
-    max-width: 70px;
-    padding: 2px 8px;
+    min-width: 80px;
+    max-width: 80px;
+    padding: 4px 8px;
     text-align: center;
     border-bottom: solid 1px rgb(240, 240, 240);
 }
 
 .table1-meta-cell {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 300px;
+    max-width: 300px;
     padding: 2px 8px;
     border-bottom: solid 1px rgb(240, 240, 240);
 }
