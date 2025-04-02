@@ -5,6 +5,22 @@
     color: rgb(255,255,255);
 }
 
+.table-row-country-name {
+    background-color: rgb(208,208,208);
+    font-weight: bold;
+}
+
+.table-row-national-total {
+    background-color: rgb(218,242,208);
+    font-weight: bold;
+}
+
+.table-row-total-other {
+    background-color: rgb(0,112,192);
+    font-weight: bold;
+    color: rgb(255,255,255);
+}
+
 .table-row-total-disclose {
     background-color: rgb(39,83,23);
     font-weight: bold;
