@@ -1,0 +1,610 @@
+<div style="max-height: 0px; overflow: hidden;">
+    <div id="figure_2_legend"></div>
+    <div class="mb-2" style="text-align: center;">
+        <select style="width:100%; border: solid 1px rgb(200,200,200);" id="yearSelect" class="form-select-sm"
+            aria-label="Default select example" onchange="onYearSelect()">
+            {{ range seq 2019 2023 }}
+            <option value="{{.}}">{{.}}</option>
+            {{ end }}
+        </select>
+    </div>
+</div>
+
+<style>
+    .legend-col {
+        width: 300px;
+        margin: 0px 8px;
+        font-weight: bold;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: baseline;
+        margin: 0px 2px;
+    }
+
+    .legend-text {
+        font-size: 14px;
+    }
+
+    .legend-head {
+        color: white;
+        font-size: 14px;
+        padding: 2px 8px;
+        margin-bottom: 8px;
+        min-height: 22px;
+    }
+
+    .legend-country {
+        color: white;
+        font-size: 14px;
+        padding: 2px 8px;
+        margin-bottom: 8px;
+        margin: 0px 2px 8px 2px;
+    }
+</style>
+
+<div class="mt-5" style="display: flex; flex-direction: column; align-items: center;">
+    <svg id="project_1_figure_2"></svg>
+
+    <div class="mt-4" style="display: flex; flex-direction: row;">
+        <div class="legend-col">
+            <div class="legend-head" style="background: rgb(204, 0, 204);">
+                North America
+            </div>
+
+            <div class="legend-country" style="background: rgb(204, 0, 204);">
+                Canada
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="Canada">
+                <div class="legend-color" style="background: rgb(128, 0, 128);"></div>
+                <div class="legend-text">Alberta Carbon Trunk Line (ACTL) </div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="Canada">
+                <div class="legend-color" style="background: rgb(153, 50, 204);"></div>
+                <div class="legend-text">Quest </div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="Canada">
+                <div class="legend-color" style="background: rgb(186, 85, 211);"></div>
+                <div class="legend-text">Aquistore</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="Canada">
+                <div class="legend-color" style="background: rgb(147, 112, 219);"></div>
+                <div class="legend-text">Weyburn-Midale</div>
+            </div>
+
+            <div class="legend-country" style="background: rgb(138, 43, 226);">
+                USA
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(138, 43, 226);"></div>
+                <div class="legend-text">Denver Unit / Wasson San Andres Field</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(148, 0, 211);"></div>
+                <div class="legend-text">North Burbank Unit</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(160, 32, 240);"></div>
+                <div class="legend-text">Core Energy Otsego County EOR Operations</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(216, 191, 216);"></div>
+                <div class="legend-text">Shute Creek</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(221, 160, 221);"></div>
+                <div class="legend-text">30-30 Gas Plant</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(238, 130, 238);"></div>
+                <div class="legend-text">Illinois Industrial Carbon Capture and Sequestration Project</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(218, 112, 214);"></div>
+                <div class="legend-text">Barnett RDC Well No. 1</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(199, 21, 133);"></div>
+                <div class="legend-text">Blue Flint CO2 Storage Project</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(255, 0, 255);"></div>
+                <div class="legend-text">Campo Viejo Gas Processing Plant</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(204, 0, 204);"></div>
+                <div class="legend-text">Camrick Unit</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(145, 61, 136);"></div>
+                <div class="legend-text">Hobbs Field</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(112, 41, 99);"></div>
+                <div class="legend-text">Petra Nova West Ranch</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(170, 45, 180);"></div>
+                <div class="legend-text">Red Trail Energy, LLC</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(140, 60, 200);"></div>
+                <div class="legend-text">Red Hills Gas Processing Plant</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(180, 70, 220);"></div>
+                <div class="legend-text">Seminole East Field (SEF)</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(120, 50, 160);"></div>
+                <div class="legend-text">Seminole San Andres Unit</div>
+            </div>
+
+            <div class="legend-item" data-continent="North America" data-country="USA">
+                <div class="legend-color" style="background: rgb(200, 100, 255);"></div>
+                <div class="legend-text">West Seminole San Andres Unit</div>
+            </div>
+
+
+        </div>
+
+        <div class="legend-col">
+            <div class="legend-head" style="background: rgb(50, 160, 80);">
+                Sorth America
+            </div>
+            <div class="legend-country" style="background: rgb(50, 160, 80);">
+                Brazil
+            </div>
+            <div class="legend-item" data-continent="South America" data-country="Brazil">
+                <div class="legend-color" style="background: rgb(50, 160, 80);"></div>
+                <div class="legend-text">Petrobras Santos Basin Pre-Salt Oil Field</div>
+            </div>
+        </div>
+
+
+        <div class="legend-col">
+            <div class="legend-head" style="background: rgb(0, 128, 255);">
+                Europe
+            </div>
+            <div class="legend-country" style="background: rgb(0, 128, 255);">
+                Norway
+            </div>
+            <div class="legend-item" data-continent="Europe" data-country="Norway">
+                <div class="legend-color" style="background: rgb(0, 128, 255);"></div>
+                <div class="legend-text">Sleipner </div>
+            </div>
+
+            <div class="legend-item" data-continent="Europe" data-country="Norway">
+                <div class="legend-color" style="background: rgb(0, 102, 204);"></div>
+                <div class="legend-text">Snohvit </div>
+            </div>
+        </div>
+
+        <div class="legend-col">
+            <div class="legend-head" style="background: rgb(239,59,44);">
+                Asia
+            </div>
+
+            <div class="legend-country" style="background: rgb(239,59,44);">
+                China
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(235, 70, 60);"></div>
+                <div class="legend-text">ShengLi Oilfield</div>
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(200, 40, 50);"></div>
+                <div class="legend-text">Zhongyuan Oilfield</div>
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(220, 90, 80);"></div>
+                <div class="legend-text">Yanchang Integrated Demonstration</div>
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(180, 30, 60);"></div>
+                <div class="legend-text">Xinjiang Ordos Basin</div>
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(210, 75, 50);"></div>
+                <div class="legend-text">Karamay Dunhua</div>
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="China">
+                <div class="legend-color" style="background: rgb(190, 55, 70);"></div>
+                <div class="legend-text">Jilin Oilfield</div>
+            </div>
+
+            <div class="legend-country" style="background: rgb(210, 120, 50);">
+                Qatar
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="Qatar">
+                <div class="legend-color" style="background: rgb(210, 120, 50);"></div>
+                <div class="legend-text">Qatar LNG</div>
+            </div>
+
+            <div class="legend-country" style="background: rgb(160, 100, 60);">
+                Saudi Arabia
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="Saudi Arabia">
+                <div class="legend-color" style="background: rgb(160, 100, 60);"></div>
+                <div class="legend-text">Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project
+                </div>
+            </div>
+
+            <div class="legend-country" style="background: rgb(240, 180, 50);">
+                United Arab Emirates
+            </div>
+
+            <div class="legend-item" data-continent="Asia" data-country="United Arab Emirates">
+                <div class="legend-color" style="background: rgb(240, 180, 50);"></div>
+                <div class="legend-text">ADNOC Al Reyadah</div>
+            </div>
+        </div>
+
+        <div class="legend-col">
+            <div class="legend-head" style="background: rgb(99,99,99);">
+                Oceania
+            </div>
+
+            <div class="legend-country" style="background: rgb(99,99,99);">
+                Australia
+            </div>
+
+            <div class="legend-item" data-continent="Oceania" data-country="Australia">
+                <div class="legend-color" style="background: rgb(99,99,99);"></div>
+                <div class="legend-text">Chevron Gorgon</div>
+            </div>
+        </div>
+
+        <!-- <div class="legend-col">
+            Sub-Saharan and Africa
+        </div> -->
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<template id="figure_2_legend-grp-template">
+    <div class="figure_2_legend-grp">
+        <b>
+            <div class="figure_2_legend-grp-header" style="font-size: 10px; color: white"></div>
+        </b>
+        <div class="figure_2_legend-grp-content"></div>
+    </div>
+</template>
+
+<template id="figure_2_legend-btn-template">
+    <div>
+        <div class="figure_2_legend-btn" style="font-size: 10px;">
+            <span class="figure_2_legend-color"></span>
+            <span class="figure_2_legend-text"></span>
+        </div>
+    </div>
+</template>
+
+<script type="module">
+
+    const allData = { "2019": [{ "id": "Sleipner", "country": "Norway", "facility": "Sleipner ", "year": 2019, "value": 0.482, "p": 0.01698020150778553, "n": 7, "pc": 0.40066500415627604, "nc": 160 }, { "id": "Snohvit", "country": "Norway", "facility": "Snohvit ", "year": 2019, "value": 0.721, "p": 0.02539984499401113, "n": 10, "pc": 0.5993349958437241, "nc": 240 }, { "id": "ADNOC_Al_Reyadah", "country": "United Arab Emirates", "facility": "ADNOC Al Reyadah", "year": 2019, "value": 0.8, "p": 0.02818290706686395, "n": 11, "pc": 1.0, "nc": 400 }, { "id": "Chevron_Gorgon", "country": "Australia", "facility": "Chevron Gorgon", "year": 2019, "value": 2.707, "p": 0.09536391178750088, "n": 38, "pc": 1.0, "nc": 400 }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "country": "Brazil", "facility": "Petrobras Santos Basin Pre-Salt Oil Field", "year": 2019, "value": 4.6, "p": 0.16205171563446769, "n": 65, "pc": 1.0, "nc": 400 }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "country": "Canada", "facility": "Alberta Carbon Trunk Line (ACTL) ", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Quest", "country": "Canada", "facility": "Quest ", "year": 2019, "value": 1.128, "p": 0.039737898964278165, "n": 16, "pc": 0.3346188074755265, "nc": 134 }, { "id": "Aquistore", "country": "Canada", "facility": "Aquistore", "year": 2019, "value": 0.27, "p": 0.009511731135066584, "n": 4, "pc": 0.08009492732126966, "nc": 32 }, { "id": "Weyburn-Midale", "country": "Canada", "facility": "Weyburn-Midale", "year": 2019, "value": 1.973, "p": 0.06950609455365321, "n": 28, "pc": 0.5852862652032038, "nc": 234 }, { "id": "ShengLi__Oilfield", "country": "China", "facility": "ShengLi  Oilfield", "year": 2019, "value": 0.23, "p": 0.008102585781723385, "n": 3, "pc": 0.12234042553191489, "nc": 49 }, { "id": "Zhongyuan_Oilfield", "country": "China", "facility": "Zhongyuan Oilfield", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Yanchang_Integrated_Demonstration", "country": "China", "facility": "Yanchang Integrated Demonstration", "year": 2019, "value": 0.05, "p": 0.0017614316916789968, "n": 2, "pc": 0.026595744680851064, "nc": 11 }, { "id": "Xinjiang_Ordos_Basin", "country": "China", "facility": "Xinjiang Ordos Basin", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Karamay_Dunhua", "country": "China", "facility": "Karamay Dunhua", "year": 2019, "value": 0.1, "p": 0.0035228633833579936, "n": 1, "pc": 0.05319148936170213, "nc": 21 }, { "id": "Jilin_Oilfield", "country": "China", "facility": "Jilin Oilfield", "year": 2019, "value": 1.5, "p": 0.052842950750369905, "n": 21, "pc": 0.7978723404255319, "nc": 319 }, { "id": "Qatar_LNG", "country": "Qatar", "facility": "Qatar LNG", "year": 2019, "value": 0.56, "p": 0.019728034946804765, "n": 8, "pc": 1.0, "nc": 400 }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "country": "Saudi Arabia", "facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "year": 2019, "value": 0.114, "p": 0.004016064257028113, "n": 2, "pc": 1.0, "nc": 400 }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "country": "USA", "facility": "Denver Unit / Wasson San Andres Field", "year": 2019, "value": 7.05, "p": 0.24836186852673853, "n": 99, "pc": 0.536080906394951, "nc": 214 }, { "id": "North_Burbank_Unit", "country": "USA", "facility": "North Burbank Unit", "year": 2019, "value": 1.16, "p": 0.04086521524695272, "n": 16, "pc": 0.08820622005931107, "nc": 35 }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "country": "USA", "facility": "Core Energy  Otsego County EOR Operations", "year": 2019, "value": 0.383, "p": 0.013492566758261115, "n": 5, "pc": 0.0291232605885484, "nc": 12 }, { "id": "Shute_Creek", "country": "USA", "facility": "Shute Creek", "year": 2019, "value": 0.376, "p": 0.013245966321426056, "n": 5, "pc": 0.028590981674397383, "nc": 12 }, { "id": "30-30_Gas_Plant", "country": "USA", "facility": "30-30 Gas Plant", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "country": "USA", "facility": "Illinois Industrial Carbon Capture and Sequestration Project", "year": 2019, "value": 0.52, "p": 0.018318889593461566, "n": 7, "pc": 0.03954071933693255, "nc": 16 }, { "id": "Barnett_RDC_Well_No._1", "country": "USA", "facility": "Barnett RDC Well No. 1", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Blue_Flint_CO2_Storage_Project", "country": "USA", "facility": "Blue Flint CO2 Storage Project", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Campo_Viejo_Gas_Processing_Plant", "country": "USA", "facility": "Campo Viejo Gas Processing Plant", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Camrick_Unit", "country": "USA", "facility": "Camrick Unit", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Hobbs_Field", "country": "USA", "facility": "Hobbs Field", "year": 2019, "value": 3.662, "p": 0.12900725709856972, "n": 52, "pc": 0.2784579119458596, "nc": 111 }, { "id": "Petra_Nova_West_Ranch", "country": "USA", "facility": "Petra Nova West Ranch", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Trail_Energy,_LLC", "country": "USA", "facility": "Red Trail Energy, LLC", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Hills_Gas_Processing_Plant", "country": "USA", "facility": "Red Hills Gas Processing Plant", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_East_Field_(SEF)", "country": "USA", "facility": "Seminole East Field (SEF)", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_San_Andres_Unit", "country": "USA", "facility": "Seminole San Andres Unit", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "West_Seminole_San_Andres_Unit", "country": "USA", "facility": "West Seminole San Andres Unit", "year": 2019, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }], "2020": [{ "id": "Sleipner", "country": "Norway", "facility": "Sleipner ", "year": 2020, "value": 0.506, "p": 0.018650939918908958, "n": 7, "pc": 0.5452586206896552, "nc": 218 }, { "id": "Snohvit", "country": "Norway", "facility": "Snohvit ", "year": 2020, "value": 0.422, "p": 0.015554736454109841, "n": 6, "pc": 0.45474137931034486, "nc": 182 }, { "id": "ADNOC_Al_Reyadah", "country": "United Arab Emirates", "facility": "ADNOC Al Reyadah", "year": 2020, "value": 0.8, "p": 0.029487652045705862, "n": 12, "pc": 1.0, "nc": 400 }, { "id": "Chevron_Gorgon", "country": "Australia", "facility": "Chevron Gorgon", "year": 2020, "value": 2.171, "p": 0.08002211573903427, "n": 32, "pc": 1.0, "nc": 400 }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "country": "Brazil", "facility": "Petrobras Santos Basin Pre-Salt Oil Field", "year": 2020, "value": 7.0, "p": 0.2580169553999263, "n": 103, "pc": 1.0, "nc": 400 }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "country": "Canada", "facility": "Alberta Carbon Trunk Line (ACTL) ", "year": 2020, "value": 0.933, "p": 0.03438997419830446, "n": 14, "pc": 0.22020297380221857, "nc": 88 }, { "id": "Quest", "country": "Canada", "facility": "Quest ", "year": 2020, "value": 0.941, "p": 0.03468485071876152, "n": 14, "pc": 0.22209110219494924, "nc": 89 }, { "id": "Aquistore", "country": "Canada", "facility": "Aquistore", "year": 2020, "value": 0.37, "p": 0.01363803907113896, "n": 5, "pc": 0.08732593816379514, "nc": 35 }, { "id": "Weyburn-Midale", "country": "Canada", "facility": "Weyburn-Midale", "year": 2020, "value": 1.993, "p": 0.07346111315886474, "n": 29, "pc": 0.47037998583903706, "nc": 188 }, { "id": "ShengLi__Oilfield", "country": "China", "facility": "ShengLi  Oilfield", "year": 2020, "value": 0.298, "p": 0.010984150387025432, "n": 4, "pc": 0.12691652470187395, "nc": 51 }, { "id": "Zhongyuan_Oilfield", "country": "China", "facility": "Zhongyuan Oilfield", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Yanchang_Integrated_Demonstration", "country": "China", "facility": "Yanchang Integrated Demonstration", "year": 2020, "value": 0.05, "p": 0.0018429782528566164, "n": 2, "pc": 0.021294718909710394, "nc": 8 }, { "id": "Xinjiang_Ordos_Basin", "country": "China", "facility": "Xinjiang Ordos Basin", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Karamay_Dunhua", "country": "China", "facility": "Karamay Dunhua", "year": 2020, "value": 0.1, "p": 0.003685956505713233, "n": 1, "pc": 0.04258943781942079, "nc": 17 }, { "id": "Jilin_Oilfield", "country": "China", "facility": "Jilin Oilfield", "year": 2020, "value": 1.9, "p": 0.07003317360855142, "n": 28, "pc": 0.8091993185689949, "nc": 324 }, { "id": "Qatar_LNG", "country": "Qatar", "facility": "Qatar LNG", "year": 2020, "value": 0.63, "p": 0.023221525985993367, "n": 9, "pc": 1.0, "nc": 400 }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "country": "Saudi Arabia", "facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "year": 2020, "value": 0.114, "p": 0.004201990416513085, "n": 2, "pc": 1.0, "nc": 400 }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "country": "USA", "facility": "Denver Unit / Wasson San Andres Field", "year": 2020, "value": 4.95, "p": 0.18245484703280504, "n": 73, "pc": 0.5560548191417659, "nc": 222 }, { "id": "North_Burbank_Unit", "country": "USA", "facility": "North Burbank Unit", "year": 2020, "value": 0.66, "p": 0.024327312937707336, "n": 10, "pc": 0.07414064255223546, "nc": 30 }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "country": "USA", "facility": "Core Energy  Otsego County EOR Operations", "year": 2020, "value": 0.213, "p": 0.007851087357169186, "n": 3, "pc": 0.023927207369130534, "nc": 10 }, { "id": "Shute_Creek", "country": "USA", "facility": "Shute Creek", "year": 2020, "value": 0.418, "p": 0.015407298193881312, "n": 6, "pc": 0.046955740283082456, "nc": 19 }, { "id": "30-30_Gas_Plant", "country": "USA", "facility": "30-30 Gas Plant", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "country": "USA", "facility": "Illinois Industrial Carbon Capture and Sequestration Project", "year": 2020, "value": 0.522, "p": 0.019240692959823075, "n": 8, "pc": 0.05863850820040441, "nc": 23 }, { "id": "Barnett_RDC_Well_No._1", "country": "USA", "facility": "Barnett RDC Well No. 1", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Blue_Flint_CO2_Storage_Project", "country": "USA", "facility": "Blue Flint CO2 Storage Project", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Campo_Viejo_Gas_Processing_Plant", "country": "USA", "facility": "Campo Viejo Gas Processing Plant", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Camrick_Unit", "country": "USA", "facility": "Camrick Unit", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Hobbs_Field", "country": "USA", "facility": "Hobbs Field", "year": 2020, "value": 2.139, "p": 0.07884260965720603, "n": 32, "pc": 0.24028308245338126, "nc": 96 }, { "id": "Petra_Nova_West_Ranch", "country": "USA", "facility": "Petra Nova West Ranch", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Trail_Energy,_LLC", "country": "USA", "facility": "Red Trail Energy, LLC", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Hills_Gas_Processing_Plant", "country": "USA", "facility": "Red Hills Gas Processing Plant", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_East_Field_(SEF)", "country": "USA", "facility": "Seminole East Field (SEF)", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_San_Andres_Unit", "country": "USA", "facility": "Seminole San Andres Unit", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "West_Seminole_San_Andres_Unit", "country": "USA", "facility": "West Seminole San Andres Unit", "year": 2020, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }], "2021": [{ "id": "Sleipner", "country": "Norway", "facility": "Sleipner ", "year": 2021, "value": 0.322, "p": 0.012284918545648775, "n": 5, "pc": 1.0, "nc": 400 }, { "id": "Snohvit", "country": "Norway", "facility": "Snohvit ", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "ADNOC_Al_Reyadah", "country": "United Arab Emirates", "facility": "ADNOC Al Reyadah", "year": 2021, "value": 0.8, "p": 0.03052153675937584, "n": 12, "pc": 1.0, "nc": 400 }, { "id": "Chevron_Gorgon", "country": "Australia", "facility": "Chevron Gorgon", "year": 2021, "value": 1.656, "p": 0.06317958109190798, "n": 25, "pc": 1.0, "nc": 400 }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "country": "Brazil", "facility": "Petrobras Santos Basin Pre-Salt Oil Field", "year": 2021, "value": 8.7, "p": 0.3319217122582122, "n": 133, "pc": 1.0, "nc": 400 }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "country": "Canada", "facility": "Alberta Carbon Trunk Line (ACTL) ", "year": 2021, "value": 1.24, "p": 0.04730838197703255, "n": 19, "pc": 0.274518485720611, "nc": 110 }, { "id": "Quest", "country": "Canada", "facility": "Quest ", "year": 2021, "value": 1.055, "p": 0.04025027660142688, "n": 16, "pc": 0.23356209873810047, "nc": 93 }, { "id": "Aquistore", "country": "Canada", "facility": "Aquistore", "year": 2021, "value": 0.45, "p": 0.01716836442714891, "n": 7, "pc": 0.09962364401151207, "nc": 40 }, { "id": "Weyburn-Midale", "country": "Canada", "facility": "Weyburn-Midale", "year": 2021, "value": 1.772, "p": 0.06760520392201748, "n": 27, "pc": 0.39229577152977635, "nc": 157 }, { "id": "ShengLi__Oilfield", "country": "China", "facility": "ShengLi  Oilfield", "year": 2021, "value": 0.308, "p": 0.011750791652359698, "n": 5, "pc": 0.12530512611879577, "nc": 50 }, { "id": "Zhongyuan_Oilfield", "country": "China", "facility": "Zhongyuan Oilfield", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Yanchang_Integrated_Demonstration", "country": "China", "facility": "Yanchang Integrated Demonstration", "year": 2021, "value": 0.05, "p": 0.00190759604746099, "n": 2, "pc": 0.02034174125305126, "nc": 8 }, { "id": "Xinjiang_Ordos_Basin", "country": "China", "facility": "Xinjiang Ordos Basin", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Karamay_Dunhua", "country": "China", "facility": "Karamay Dunhua", "year": 2021, "value": 0.1, "p": 0.00381519209492198, "n": 1, "pc": 0.04068348250610252, "nc": 16 }, { "id": "Jilin_Oilfield", "country": "China", "facility": "Jilin Oilfield", "year": 2021, "value": 2.0, "p": 0.07630384189843958, "n": 30, "pc": 0.8136696501220504, "nc": 326 }, { "id": "Qatar_LNG", "country": "Qatar", "facility": "Qatar LNG", "year": 2021, "value": 0.62, "p": 0.023654190988516274, "n": 9, "pc": 1.0, "nc": 400 }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "country": "Saudi Arabia", "facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "year": 2021, "value": 0.114, "p": 0.004349318988211057, "n": 2, "pc": 1.0, "nc": 400 }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "country": "USA", "facility": "Denver Unit / Wasson San Andres Field", "year": 2021, "value": 2.61, "p": 0.09957651367746366, "n": 40, "pc": 0.37158314350797267, "nc": 149 }, { "id": "North_Burbank_Unit", "country": "USA", "facility": "North Burbank Unit", "year": 2021, "value": 0.714, "p": 0.027240471557742934, "n": 11, "pc": 0.10165148063781321, "nc": 41 }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "country": "USA", "facility": "Core Energy  Otsego County EOR Operations", "year": 2021, "value": 0.233, "p": 0.008889397581168213, "n": 4, "pc": 0.03317198177676538, "nc": 13 }, { "id": "Shute_Creek", "country": "USA", "facility": "Shute Creek", "year": 2021, "value": 0.425, "p": 0.016214566403418413, "n": 6, "pc": 0.06050683371298405, "nc": 24 }, { "id": "30-30_Gas_Plant", "country": "USA", "facility": "30-30 Gas Plant", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "country": "USA", "facility": "Illinois Industrial Carbon Capture and Sequestration Project", "year": 2021, "value": 0.52, "p": 0.019838998893594296, "n": 8, "pc": 0.07403189066059225, "nc": 30 }, { "id": "Barnett_RDC_Well_No._1", "country": "USA", "facility": "Barnett RDC Well No. 1", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Blue_Flint_CO2_Storage_Project", "country": "USA", "facility": "Blue Flint CO2 Storage Project", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Campo_Viejo_Gas_Processing_Plant", "country": "USA", "facility": "Campo Viejo Gas Processing Plant", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Camrick_Unit", "country": "USA", "facility": "Camrick Unit", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Hobbs_Field", "country": "USA", "facility": "Hobbs Field", "year": 2021, "value": 1.706, "p": 0.06508717713936897, "n": 26, "pc": 0.24288154897494305, "nc": 97 }, { "id": "Petra_Nova_West_Ranch", "country": "USA", "facility": "Petra Nova West Ranch", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Trail_Energy,_LLC", "country": "USA", "facility": "Red Trail Energy, LLC", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Hills_Gas_Processing_Plant", "country": "USA", "facility": "Red Hills Gas Processing Plant", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_East_Field_(SEF)", "country": "USA", "facility": "Seminole East Field (SEF)", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_San_Andres_Unit", "country": "USA", "facility": "Seminole San Andres Unit", "year": 2021, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "West_Seminole_San_Andres_Unit", "country": "USA", "facility": "West Seminole San Andres Unit", "year": 2021, "value": 0.816, "p": 0.031131967494563352, "n": 12, "pc": 0.11617312072892938, "nc": 46 }], "2022": [{ "id": "Sleipner", "country": "Norway", "facility": "Sleipner ", "year": 2022, "value": 0.115, "p": 0.0037720995834290027, "n": 1, "pc": 0.22243713733075435, "nc": 89 }, { "id": "Snohvit", "country": "Norway", "facility": "Snohvit ", "year": 2022, "value": 0.402, "p": 0.01318594810903008, "n": 5, "pc": 0.7775628626692457, "nc": 311 }, { "id": "ADNOC_Al_Reyadah", "country": "United Arab Emirates", "facility": "ADNOC Al Reyadah", "year": 2022, "value": 0.8, "p": 0.026240692754288718, "n": 10, "pc": 1.0, "nc": 400 }, { "id": "Chevron_Gorgon", "country": "Australia", "facility": "Chevron Gorgon", "year": 2022, "value": 1.72, "p": 0.056417489421720736, "n": 23, "pc": 1.0, "nc": 400 }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "country": "Brazil", "facility": "Petrobras Santos Basin Pre-Salt Oil Field", "year": 2022, "value": 10.6, "p": 0.34768917899432544, "n": 139, "pc": 1.0, "nc": 400 }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "country": "Canada", "facility": "Alberta Carbon Trunk Line (ACTL) ", "year": 2022, "value": 1.034, "p": 0.03391609538491817, "n": 13, "pc": 0.23356674949175515, "nc": 93 }, { "id": "Quest", "country": "Canada", "facility": "Quest ", "year": 2022, "value": 0.971, "p": 0.031849640830517924, "n": 13, "pc": 0.21933589338152248, "nc": 88 }, { "id": "Aquistore", "country": "Canada", "facility": "Aquistore", "year": 2022, "value": 0.5, "p": 0.016400432971430446, "n": 6, "pc": 0.112943302462164, "nc": 45 }, { "id": "Weyburn-Midale", "country": "Canada", "facility": "Weyburn-Midale", "year": 2022, "value": 1.922, "p": 0.06304326434217863, "n": 25, "pc": 0.4341540546645584, "nc": 174 }, { "id": "ShengLi__Oilfield", "country": "China", "facility": "ShengLi  Oilfield", "year": 2022, "value": 0.657, "p": 0.021550168924459608, "n": 9, "pc": 0.1836734693877551, "nc": 73 }, { "id": "Zhongyuan_Oilfield", "country": "China", "facility": "Zhongyuan Oilfield", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Yanchang_Integrated_Demonstration", "country": "China", "facility": "Yanchang Integrated Demonstration", "year": 2022, "value": 0.05, "p": 0.0016400432971430449, "n": 2, "pc": 0.01397819401733296, "nc": 6 }, { "id": "Xinjiang_Ordos_Basin", "country": "China", "facility": "Xinjiang Ordos Basin", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Karamay_Dunhua", "country": "China", "facility": "Karamay Dunhua", "year": 2022, "value": 0.1, "p": 0.0032800865942860897, "n": 1, "pc": 0.02795638803466592, "nc": 11 }, { "id": "Jilin_Oilfield", "country": "China", "facility": "Jilin Oilfield", "year": 2022, "value": 2.77, "p": 0.09085839866172468, "n": 36, "pc": 0.7743919485602461, "nc": 310 }, { "id": "Qatar_LNG", "country": "Qatar", "facility": "Qatar LNG", "year": 2022, "value": 0.59, "p": 0.019352510906287927, "n": 8, "pc": 1.0, "nc": 400 }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "country": "Saudi Arabia", "facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "year": 2022, "value": 0.316, "p": 0.010365073637944042, "n": 4, "pc": 1.0, "nc": 400 }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "country": "USA", "facility": "Denver Unit / Wasson San Andres Field", "year": 2022, "value": 3.0, "p": 0.09840259782858268, "n": 39, "pc": 0.3778337531486146, "nc": 151 }, { "id": "North_Burbank_Unit", "country": "USA", "facility": "North Burbank Unit", "year": 2022, "value": 0.652, "p": 0.021386164594745304, "n": 8, "pc": 0.08211586901763224, "nc": 33 }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "country": "USA", "facility": "Core Energy  Otsego County EOR Operations", "year": 2022, "value": 0.311, "p": 0.010201069308229737, "n": 4, "pc": 0.03916876574307305, "nc": 16 }, { "id": "Shute_Creek", "country": "USA", "facility": "Shute Creek", "year": 2022, "value": 0.395, "p": 0.012956342047430054, "n": 5, "pc": 0.04974811083123426, "nc": 20 }, { "id": "30-30_Gas_Plant", "country": "USA", "facility": "30-30 Gas Plant", "year": 2022, "value": 0.012, "p": 0.00039361039131433073, "n": 1, "pc": 0.0015113350125944584, "nc": 1 }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "country": "USA", "facility": "Illinois Industrial Carbon Capture and Sequestration Project", "year": 2022, "value": 0.429, "p": 0.014071571489487324, "n": 6, "pc": 0.054030226700251885, "nc": 21 }, { "id": "Barnett_RDC_Well_No._1", "country": "USA", "facility": "Barnett RDC Well No. 1", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Blue_Flint_CO2_Storage_Project", "country": "USA", "facility": "Blue Flint CO2 Storage Project", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Campo_Viejo_Gas_Processing_Plant", "country": "USA", "facility": "Campo Viejo Gas Processing Plant", "year": 2022, "value": 0.077, "p": 0.0025256666776002886, "n": 1, "pc": 0.009697732997481107, "nc": 4 }, { "id": "Camrick_Unit", "country": "USA", "facility": "Camrick Unit", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Hobbs_Field", "country": "USA", "facility": "Hobbs Field", "year": 2022, "value": 2.189, "p": 0.0718010955489225, "n": 29, "pc": 0.2756926952141058, "nc": 110 }, { "id": "Petra_Nova_West_Ranch", "country": "USA", "facility": "Petra Nova West Ranch", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Red_Trail_Energy,_LLC", "country": "USA", "facility": "Red Trail Energy, LLC", "year": 2022, "value": 0.082, "p": 0.002689671007314593, "n": 1, "pc": 0.010327455919395465, "nc": 4 }, { "id": "Red_Hills_Gas_Processing_Plant", "country": "USA", "facility": "Red Hills Gas Processing Plant", "year": 2022, "value": 0.024, "p": 0.0007872207826286615, "n": 1, "pc": 0.003022670025188917, "nc": 1 }, { "id": "Seminole_East_Field_(SEF)", "country": "USA", "facility": "Seminole East Field (SEF)", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Seminole_San_Andres_Unit", "country": "USA", "facility": "Seminole San Andres Unit", "year": 2022, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "West_Seminole_San_Andres_Unit", "country": "USA", "facility": "West Seminole San Andres Unit", "year": 2022, "value": 0.769, "p": 0.02522386591006003, "n": 10, "pc": 0.09685138539042822, "nc": 39 }], "2023": [{ "id": "Sleipner", "country": "Norway", "facility": "Sleipner ", "year": 2023, "value": 0.106, "p": 0.0028183244263646277, "n": 1, "pc": 0.13892529488859764, "nc": 56 }, { "id": "Snohvit", "country": "Norway", "facility": "Snohvit ", "year": 2023, "value": 0.657, "p": 0.0174682938502034, "n": 7, "pc": 0.8610747051114024, "nc": 344 }, { "id": "ADNOC_Al_Reyadah", "country": "United Arab Emirates", "facility": "ADNOC Al Reyadah", "year": 2023, "value": 0.8, "p": 0.021270373029167, "n": 8, "pc": 1.0, "nc": 400 }, { "id": "Chevron_Gorgon", "country": "Australia", "facility": "Chevron Gorgon", "year": 2023, "value": 1.594, "p": 0.04238121826061525, "n": 17, "pc": 1.0, "nc": 400 }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "country": "Brazil", "facility": "Petrobras Santos Basin Pre-Salt Oil Field", "year": 2023, "value": 13.0, "p": 0.34564356172396377, "n": 138, "pc": 1.0, "nc": 400 }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "country": "Canada", "facility": "Alberta Carbon Trunk Line (ACTL) ", "year": 2023, "value": 1.478, "p": 0.039297014171386035, "n": 15, "pc": 0.5957275292220879, "nc": 238 }, { "id": "Quest", "country": "Canada", "facility": "Quest ", "year": 2023, "value": 1.003, "p": 0.026667730185318123, "n": 10, "pc": 0.4042724707779121, "nc": 162 }, { "id": "Aquistore", "country": "Canada", "facility": "Aquistore", "year": 2023, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Weyburn-Midale", "country": "Canada", "facility": "Weyburn-Midale", "year": 2023, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "ShengLi__Oilfield", "country": "China", "facility": "ShengLi  Oilfield", "year": 2023, "value": 0.472, "p": 0.01254952008720853, "n": 5, "pc": 0.21338155515370702, "nc": 85 }, { "id": "Zhongyuan_Oilfield", "country": "China", "facility": "Zhongyuan Oilfield", "year": 2023, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Yanchang_Integrated_Demonstration", "country": "China", "facility": "Yanchang Integrated Demonstration", "year": 2023, "value": 0.05, "p": 0.0013293983143229376, "n": 1, "pc": 0.022603978300180832, "nc": 9 }, { "id": "Xinjiang_Ordos_Basin", "country": "China", "facility": "Xinjiang Ordos Basin", "year": 2023, "value": 0.0, "p": 0.0, "n": 0, "pc": 0.0, "nc": 0 }, { "id": "Karamay_Dunhua", "country": "China", "facility": "Karamay Dunhua", "year": 2023, "value": 0.1, "p": 0.002658796628645875, "n": 1, "pc": 0.045207956600361664, "nc": 18 }, { "id": "Jilin_Oilfield", "country": "China", "facility": "Jilin Oilfield", "year": 2023, "value": 1.59, "p": 0.042274866395469415, "n": 17, "pc": 0.7188065099457505, "nc": 288 }, { "id": "Qatar_LNG", "country": "Qatar", "facility": "Qatar LNG", "year": 2023, "value": 0.68, "p": 0.018079817074791952, "n": 7, "pc": 1.0, "nc": 400 }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "country": "Saudi Arabia", "facility": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "year": 2023, "value": 0.0, "p": 0.0, "n": 0, "pc": 0, "nc": 0 }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "country": "USA", "facility": "Denver Unit / Wasson San Andres Field", "year": 2023, "value": 3.67, "p": 0.09757783627130362, "n": 39, "pc": 0.22821963808220883, "nc": 91 }, { "id": "North_Burbank_Unit", "country": "USA", "facility": "North Burbank Unit", "year": 2023, "value": 0.631, "p": 0.016777006726755472, "n": 6, "pc": 0.039238853305142714, "nc": 15 }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "country": "USA", "facility": "Core Energy  Otsego County EOR Operations", "year": 2023, "value": 0.261, "p": 0.006939459200765734, "n": 2, "pc": 0.016230333934456814, "nc": 6 }, { "id": "Shute_Creek", "country": "USA", "facility": "Shute Creek", "year": 2023, "value": 0.435, "p": 0.011565765334609556, "n": 4, "pc": 0.02705055655742802, "nc": 10 }, { "id": "30-30_Gas_Plant", "country": "USA", "facility": "30-30 Gas Plant", "year": 2023, "value": 0.01, "p": 0.0002658796628645875, "n": 1, "pc": 0.0006218518748834028, "nc": 1 }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "country": "USA", "facility": "Illinois Industrial Carbon Capture and Sequestration Project", "year": 2023, "value": 0.544, "p": 0.014463853659833562, "n": 5, "pc": 0.03382874199365712, "nc": 13 }, { "id": "Barnett_RDC_Well_No._1", "country": "USA", "facility": "Barnett RDC Well No. 1", "year": 2023, "value": 0.008, "p": 0.00021270373029167, "n": 1, "pc": 0.0004974814999067223, "nc": 1 }, { "id": "Blue_Flint_CO2_Storage_Project", "country": "USA", "facility": "Blue Flint CO2 Storage Project", "year": 2023, "value": 0.03, "p": 0.0007976389885937624, "n": 1, "pc": 0.0018655556246502084, "nc": 1 }, { "id": "Campo_Viejo_Gas_Processing_Plant", "country": "USA", "facility": "Campo Viejo Gas Processing Plant", "year": 2023, "value": 0.01, "p": 0.0002658796628645875, "n": 1, "pc": 0.0006218518748834028, "nc": 1 }, { "id": "Camrick_Unit", "country": "USA", "facility": "Camrick Unit", "year": 2023, "value": 0.034, "p": 0.0009039908537395976, "n": 1, "pc": 0.00211429637460357, "nc": 2 }, { "id": "Hobbs_Field", "country": "USA", "facility": "Hobbs Field", "year": 2023, "value": 5.198, "p": 0.1382042487570126, "n": 55, "pc": 0.3232386045643928, "nc": 129 }, { "id": "Petra_Nova_West_Ranch", "country": "USA", "facility": "Petra Nova West Ranch", "year": 2023, "value": 0.36, "p": 0.00957166786312515, "n": 4, "pc": 0.0223866674958025, "nc": 9 }, { "id": "Red_Trail_Energy,_LLC", "country": "USA", "facility": "Red Trail Energy, LLC", "year": 2023, "value": 0.166, "p": 0.004413602403552153, "n": 1, "pc": 0.010322741123064487, "nc": 4 }, { "id": "Red_Hills_Gas_Processing_Plant", "country": "USA", "facility": "Red Hills Gas Processing Plant", "year": 2023, "value": 0.022, "p": 0.0005849352583020925, "n": 1, "pc": 0.001368074124743486, "nc": 1 }, { "id": "Seminole_East_Field_(SEF)", "country": "USA", "facility": "Seminole East Field (SEF)", "year": 2023, "value": 0.033, "p": 0.0008774028874531389, "n": 1, "pc": 0.0020521111871152293, "nc": 1 }, { "id": "Seminole_San_Andres_Unit", "country": "USA", "facility": "Seminole San Andres Unit", "year": 2023, "value": 3.933, "p": 0.10457047140464226, "n": 42, "pc": 0.2445743423916423, "nc": 97 }, { "id": "West_Seminole_San_Andres_Unit", "country": "USA", "facility": "West Seminole San Andres Unit", "year": 2023, "value": 0.736, "p": 0.019568743186833642, "n": 8, "pc": 0.04576829799141845, "nc": 18 }] };
+    const figure2Meta = [{ "id": "Sleipner", "name": "Sleipner ", "color": "rgb(0, 128, 255)", "category": 0, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor " }, { "id": "Snohvit", "name": "Snohvit ", "color": "rgb(0, 102, 204)", "category": 0, "country": "Norway", "storage_type": "Geological Storage ", "operator": "Equinor " }, { "id": "ADNOC_Al_Reyadah", "name": "ADNOC Al Reyadah", "color": "rgb(240, 180, 50)", "category": 1, "country": "United Arab Emirates", "storage_type": "Geological Storage with Oil Recovery", "operator": "Abu Dhabi National Oil Company (ADNOC)" }, { "id": "Chevron_Gorgon", "name": "Chevron Gorgon", "color": "rgb(99,99,99)", "category": 2, "country": "Australia", "storage_type": "Geological Storage ", "operator": "Chevron (C) & Exxon Mobile (EM) & Shell (S)" }, { "id": "Petrobras_Santos_Basin_Pre-Salt_Oil_Field", "name": "Petrobras Santos Basin Pre-Salt Oil Field", "color": "rgb(50, 160, 80)", "category": 3, "country": "Brazil", "storage_type": "Geological Storage with Oil Recovery", "operator": "Petrobras " }, { "id": "Alberta_Carbon_Trunk_Line_(ACTL)", "name": "Alberta Carbon Trunk Line (ACTL) ", "color": "rgb(128, 0, 128)", "category": 4, "country": "Canada", "storage_type": "Geological Storage with Oil Recovery", "operator": "Enhance Energy Inc. and  North West Redwater Partnership" }, { "id": "Quest", "name": "Quest ", "color": "rgb(153, 50, 204)", "category": 4, "country": "Canada", "storage_type": "Geological Storage ", "operator": "Shell" }, { "id": "Aquistore", "name": "Aquistore", "color": "rgb(186, 85, 211)", "category": 4, "country": "Canada", "storage_type": "Geological Storage with Oil Recovery", "operator": "SaskPower (SP)/Petroleum Technology Research Centre (PTRC)" }, { "id": "Weyburn-Midale", "name": "Weyburn-Midale", "color": "rgb(147, 112, 219)", "category": 4, "country": "Canada", "storage_type": "Geological Storage with Oil Recovery", "operator": "Cenovus Energy/Petroleum Technology Research Centre(PTRC)-2000-2015, but 2012 come to an end injection/Whitecap Resources (W) from 2017" }, { "id": "ShengLi__Oilfield", "name": "ShengLi  Oilfield", "color": "rgb(235, 70, 60)", "category": 5, "country": "China", "storage_type": "Geological Storage with Oil Recovery", "operator": "China Petroleum and Chemical Corporation (Sinopec)" }, { "id": "Zhongyuan_Oilfield", "name": "Zhongyuan Oilfield", "color": "rgb(200, 40, 50)", "category": 5, "country": "China", "storage_type": "Geological Storage with Oil Recovery", "operator": "China Petroleum and Chemical Corporation (Sinopec)" }, { "id": "Yanchang_Integrated_Demonstration", "name": "Yanchang Integrated Demonstration", "color": "rgb(220, 90, 80)", "category": 5, "country": "China", "storage_type": "Geological Storage with Oil Recovery", "operator": "Shaanxi Yangchang China Coal Yulin Energy Chemical Co. Ltd. (Yulin Energy Chemical) and Shaanxi Yanchang Petroleum (Group) Co. Ltd" }, { "id": "Xinjiang_Ordos_Basin", "name": "Xinjiang Ordos Basin", "color": "rgb(180, 30, 60)", "category": 5, "country": "China", "storage_type": "Geological Storage", "operator": "China Energy Investment Corporation (China Energy)" }, { "id": "Karamay_Dunhua", "name": "Karamay Dunhua", "color": "rgb(210, 75, 50)", "category": 5, "country": "China", "storage_type": "Geological Storage with Oil Recovery", "operator": "Xinjiang Dunhua Oil Technology Company" }, { "id": "Jilin_Oilfield", "name": "Jilin Oilfield", "color": "rgb(190, 55, 70)", "category": 5, "country": "China", "storage_type": "Geological Storage with Oil Recovery", "operator": "China National Petroleum Corporation (CNPC)" }, { "id": "Qatar_LNG", "name": "Qatar LNG", "color": "rgb(210, 120, 50)", "category": 6, "country": "Qatar", "storage_type": "Geological Storage ", "operator": "Chevron (C) & Exxon Mobile (EM) & Shell (S)" }, { "id": "Uthmaniyah_Carbon_Dioxide_Enhanced_Oil_Recovery_(CO2-EOR)_Demonstration_Project", "name": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project", "color": "rgb(160, 100, 60)", "category": 7, "country": "Saudi Arabia", "storage_type": "Geological Storage with Oil Recovery", "operator": " Saudi Aramco" }, { "id": "Denver_Unit_/_Wasson_San_Andres_Field", "name": "Denver Unit / Wasson San Andres Field", "color": "rgb(138, 43, 226)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "OXY" }, { "id": "North_Burbank_Unit", "name": "North Burbank Unit", "color": "rgb(148, 0, 211)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Perdure Petroleum, LLC" }, { "id": "Core_Energy__Otsego_County_EOR_Operations", "name": "Core Energy  Otsego County EOR Operations", "color": "rgb(160, 32, 240)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Core Energy" }, { "id": "Shute_Creek", "name": "Shute Creek", "color": "rgb(216, 191, 216)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Chevron (C) & Exxon Mobile (EM) & Shell (S)" }, { "id": "30-30_Gas_Plant", "name": "30-30 Gas Plant", "color": "rgb(221, 160, 221)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery ", "operator": "Stakeholder Gas Services, LLC" }, { "id": "Illinois_Industrial_Carbon_Capture_and_Sequestration_Project", "name": "Illinois Industrial Carbon Capture and Sequestration Project", "color": "rgb(238, 130, 238)", "category": 8, "country": "USA", "storage_type": "Geological Storage", "operator": "Archer Daniels Midland Co." }, { "id": "Barnett_RDC_Well_No._1", "name": "Barnett RDC Well No. 1", "color": "rgb(218, 112, 214)", "category": 8, "country": "USA", "storage_type": "Geological Storage", "operator": "BKV dCarbon Ventures, LLC" }, { "id": "Blue_Flint_CO2_Storage_Project", "name": "Blue Flint CO2 Storage Project", "color": "rgb(199, 21, 133)", "category": 8, "country": "USA", "storage_type": "Geological Storage", "operator": "Blue Flint Sequester Company, LLC" }, { "id": "Campo_Viejo_Gas_Processing_Plant", "name": "Campo Viejo Gas Processing Plant", "color": "rgb(255, 0, 255)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Stakeholder Gas Services, LLC" }, { "id": "Camrick_Unit", "name": "Camrick Unit", "color": "rgb(204, 0, 204)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "CapturePoint, LLC" }, { "id": "Hobbs_Field", "name": "Hobbs Field", "color": "rgb(145, 61, 136)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Occidental Permian Ltd, Occidental Petroleum Corporation, and their affiliates" }, { "id": "Petra_Nova_West_Ranch", "name": "Petra Nova West Ranch", "color": "rgb(112, 41, 99)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Petra Nova, LLC" }, { "id": "Red_Trail_Energy,_LLC", "name": "Red Trail Energy, LLC", "color": "rgb(170, 45, 180)", "category": 8, "country": "USA", "storage_type": "Geological Storage", "operator": "Red Trail Energy, LLC" }, { "id": "Red_Hills_Gas_Processing_Plant", "name": "Red Hills Gas Processing Plant", "color": "rgb(140, 60, 200)", "category": 8, "country": "USA", "storage_type": "Geological Storage", "operator": "Lucid Energy Delaware, LLC" }, { "id": "Seminole_East_Field_(SEF)", "name": "Seminole East Field (SEF)", "color": "rgb(180, 70, 220)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "Stakeholder Gas Services, LLC" }, { "id": "Seminole_San_Andres_Unit", "name": "Seminole San Andres Unit", "color": "rgb(120, 50, 160)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "OXY USA, INC" }, { "id": "West_Seminole_San_Andres_Unit", "name": "West Seminole San Andres Unit", "color": "rgb(200, 100, 255)", "category": 8, "country": "USA", "storage_type": "Geological Storage with Oil Recovery", "operator": "OXY USA WTP LP" }];
+    const categories = [
+        { 'id': 0, 'name': 'Norway', 'color': 'rgb(0, 128, 255)' },
+        { 'id': 2, 'name': 'Australia', 'color': 'rgb(99,99,99)' },
+        { 'id': 3, 'name': 'Brazil', 'color': 'rgb(50, 160, 80)' },
+        { 'id': 5, 'name': 'China', 'color': 'rgb(239,59,44)' },
+        { 'id': 1, 'name': 'United Arab Emirates', 'color': 'rgb(240, 180, 50)' },
+        { 'id': 6, 'name': 'Qatar', 'color': 'rgb(210, 120, 50)' },
+        { 'id': 7, 'name': 'Saudi Arabia', 'color': 'rgb(160, 100, 60)' },
+        { 'id': 4, 'name': 'Canada', 'color': 'rgb(128, 0, 128)' },
+        { 'id': 8, 'name': 'USA', 'color': 'rgb(204, 0, 204)' }
+    ];
+    const color = (id) => {
+        return figure2Meta.find(x => x.id == id).color
+    };
+
+    let currentYear = 2023;
+    let data = allData[currentYear];
+    const nSquares = 20;
+
+    const tooltip = d3.select("#project_1_figure_2_container").append("div")
+        .style("position", "absolute")
+        .style("background", "rgba(255,255,255,0.9)")
+        .style("border", "1px solid black")
+        .style("padding", "5px")
+        .style("border-radius", "5px")
+        .style("visibility", "hidden")
+        .style("font-size", "12px");
+
+    const buildToolTipDiv = (meta) => {
+        const { facility, year, country, p, pc } = meta;
+
+        return `
+        <div><b>Facility:</b></div>
+    <div id="itemId">${facility}</div>
+
+    <div><b>Country:</b></div>
+    <div id="country-value">${country}</div>
+
+    <div><b id="year-title">${year}:</b></div>
+    <div id="year-value">${onlyVisibleCategory ? pc.toFixed(4) * 100 : p.toFixed(4) * 100}%</div>
+        `
+    }
+
+    const drawChart = (waffles) => {
+        const chartData = data;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const options = {
+            shape: "rect",
+            style: "whole"
+        }
+        const isRect = options.shape === "rect";
+        const whole = options.style === "whole";
+        const width = 1000 - margin.left - margin.right;
+        const height = 860 - margin.top - margin.bottom;
+        const waffleSize = Math.min(width, height);
+
+        const sequence = (length) => Array.apply(null, { length: length }).map((d, i) => i);
+        const scale = d3.scaleBand()
+            .domain(sequence(nSquares))
+            .range([0, waffleSize])
+            .padding(0.1)
+
+        const svg = d3.select("#project_1_figure_2")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+        // .attr("transform", `translate(${margin.left},${margin.top})`);
+        // .style("cursor", "default")
+        // .attr("viewBox", [0, 0, width, height])
+
+
+        const g = svg.selectAll(".waffle")
+            .data(waffles)
+            .join("g")
+            .attr("class", "waffle")
+            .attr("transform", `translate(${(width + margin.left + margin.right - waffleSize) / 2},0)`);
+
+        const cellSize = scale.bandwidth();
+        const half = cellSize / 2;
+        const cells = g.append("g")
+            .selectAll(options.shape)
+            .data(d => d)
+            .join(options.shape)
+            .attr("fill", (d) => {
+                return d.index == -1 ? "rgb(240,240,240)" : color(d.meta.id)
+            }).on("mouseover", (event, d) => {
+                const htmlContent = buildToolTipDiv(d.meta);
+                tooltip.style("visibility", "visible")
+                    .html(htmlContent);
+            })
+            .on("mousemove", (event) => {
+                tooltip.style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip.style("visibility", "hidden");
+            });
+        // .attr("stroke", "rgba(156,156,156,1)")
+        // .attr("stroke-width", 1);
+        cells.attr("x", d => scale(d.x))
+            .attr("y", d => whole ? 0 : scale(d.y))
+            .attr("width", cellSize).attr("height", cellSize)
+
+        cells.transition()
+            .attr("y", d => scale(d.y) + (isRect ? 0 : half));
+
+        return svg.node();
+    }
+
+    const makeWaffle = () => {
+        const chartData = data;
+        d3.select("#project_1_figure_2").selectAll("*").remove();
+        const waffles = [];
+        const max = chartData.length;
+
+        let index = 0, curr = 1,
+            accu = Math.round(onlyVisibleCategory == null ? chartData[0].n : chartData[0].nc), waffle = [];
+
+        for (let y = nSquares - 1; y >= 0; y--)
+            for (let x = 0; x < nSquares; x++) {
+                if (curr > accu && index < max) {
+                    let r = onlyVisibleCategory == null ? Math.round(chartData[++index].n) : Math.round(chartData[++index].nc);
+                    while (r === 0 && index < max) {
+                        r = onlyVisibleCategory == null ? Math.round(chartData[++index].n) : Math.round(chartData[++index].nc);
+                    }
+                    accu += r;
+                }
+                waffle.push({ x, y, index, meta: chartData[index] });
+                curr++;
+            }
+        waffles.push(waffle);
+        return waffles;
+    }
+
+    const makeChart = () => {
+        try {
+            const waffles = makeWaffle()
+            drawChart(waffles)
+        } catch (error) {
+            const waffles = []
+            for (let y = nSquares - 1; y >= 0; y--) {
+                for (let x = 0; x < nSquares; x++) {
+                    waffles.push({ x, y, index: -1, meta: {} });
+                }
+            }
+            drawChart([waffles])
+        }
+    }
+
+    let visibleIds = new Set(figure2Meta.map(item => item.id));
+    let colorfulIds = new Set(figure2Meta.map(item => item.id));
+    let onlyVisibleCategory = null;
+
+    const changeLegendBtnColor = (id) => {
+        const item = figure2Meta.find(x => x.id == id);
+        const legendBtn = document.getElementById(`figure_2_legend-btn-${item.id}`);
+        const legendColor = legendBtn.querySelector('.figure_2_legend-color')
+        legendColor.style.backgroundColor = item.color;
+        const legendText = legendBtn.querySelector('.figure_2_legend-text')
+
+        if (visibleIds.has(id)) {
+            if (onlyVisibleCategory == null) {
+                legendText.textContent = `${item.name} (${(data.find(x => x.id == item.id).p * 100).toFixed(2)}%)`;
+            } else {
+                legendText.textContent = `${item.name} (${(data.find(x => x.id == item.id).pc * 100).toFixed(2)}%)`;
+            }
+            legendColor.style.backgroundColor = item.color
+            legendText.style.color = "";
+        } else {
+            legendText.textContent = item.name;
+            legendColor.style.backgroundColor = "rgba(0,0,0,0.1)";
+            legendText.style.color = "rgba(0,0,0,0.2)";
+        }
+    }
+
+    const changeLegendGrpHeaderColor = (grpId, grpName) => {
+        const grpMeta = categories.find(x => x.id == grpId);
+        const grpHeader = document.getElementById(`figure_2_legend-grp-header-${grpId}`);
+        if (onlyVisibleCategory == grpName || onlyVisibleCategory == null) {
+            grpHeader.style.backgroundColor = grpMeta.color;
+            grpHeader.style.color = "white";
+        } else {
+            grpHeader.style.backgroundColor = "rgba(0,0,0,0.05)";
+            grpHeader.style.color = "rgba(0,0,0,0.2)";
+        }
+    }
+
+    const onlyShowGroup = (grpId, grpName) => {
+        if (onlyVisibleCategory == grpName) {
+            onlyVisibleCategory = null;
+            visibleIds = new Set(figure2Meta.map(item => item.id));
+            data = allData[currentYear]
+        } else {
+            onlyVisibleCategory = grpName;
+            const grpLegendIds = figure2Meta.filter(item => item.country == grpName).map(item => item.id);
+            visibleIds = new Set(grpLegendIds);
+            data = allData[currentYear].filter(x => x.country == onlyVisibleCategory);
+        }
+        figure2Meta.forEach(item => {
+            changeLegendBtnColor(item.id);
+        })
+        categories.forEach(item => changeLegendGrpHeaderColor(item.id, item.name));
+    }
+
+    const changeIdColorful = (ids) => {
+        ids.forEach((x) => {
+            if (colorfulIds.has(x)) {
+                colorfulIds.delete(x);
+            } else {
+                colorfulIds.add(x);
+            }
+        });
+
+        figure2Meta.forEach(item => {
+            changeLegendBtnColor(item.id);
+        })
+    }
+
+    const legendDiv = document.getElementById("figure_2_legend")
+
+    const drawLegends = (grpMeta, grpObj) => {
+
+        const grpLegends = figure2Meta.filter((item) => {
+            return item.category == grpMeta.id
+        });
+
+        grpLegends.forEach((item) => {
+            const template = document.getElementById('figure_2_legend-btn-template');
+            const clone = template.content.cloneNode(true);
+
+            const legendColor = clone.querySelector('.figure_2_legend-color')
+            legendColor.style.backgroundColor = item.color;
+            const legendText = clone.querySelector('.figure_2_legend-text')
+            legendText.textContent = `${item.name} (${(data.find(x => x.id == item.id).p * 100).toFixed(2)}%)`;
+
+            const legendBtn = clone.querySelector('.figure_2_legend-btn')
+            legendBtn.id = `figure_2_legend-btn-${item.id}`;
+            // legendBtn.onclick = (e) => {
+            //     changeIdColorful([item.id])
+            //     legendText.textContent = `${item.name}`
+            //     if (colorfulIds.has(item.id)) {
+            //         legendColor.style.backgroundColor = item.color
+            //         legendText.style.color = "";
+            //     } else {
+            //         legendColor.style.backgroundColor = "rgba(0,0,0,0.1)";
+            //         legendText.style.color = "rgba(0,0,0,0.2)";
+            //     }
+            // };
+
+            grpObj.appendChild(clone)
+        })
+    }
+
+    categories.forEach((cat) => {
+        const grpTemplate = document.getElementById('figure_2_legend-grp-template');
+        const grpClone = grpTemplate.content.cloneNode(true);
+
+        const grpHeader = grpClone.querySelector('.figure_2_legend-grp-header');
+        grpHeader.id = `figure_2_legend-grp-header-${cat.id}`;
+        grpHeader.style.backgroundColor = cat.color;
+        grpHeader.textContent = cat.name;
+        grpHeader.onclick = (e) => {
+            onlyShowGroup(cat.id, cat.name);
+            makeChart()
+        }
+
+        const grpContent = grpClone.querySelector('.figure_2_legend-grp-content');
+        drawLegends(cat, grpContent);
+        legendDiv.appendChild(grpClone);
+    })
+
+    window.onYearSelect = () => {
+        const selectElement = document.getElementById("yearSelect");
+        currentYear = selectElement.value;
+        if (onlyVisibleCategory) {
+            data = allData[currentYear].filter(x => x.country == onlyVisibleCategory);
+        } else {
+            data = allData[currentYear]
+        }
+        makeChart()
+    }
+
+    window.onload = () => {
+        document.getElementById("yearSelect").value = currentYear;
+        makeChart()
+    }
+
+</script>

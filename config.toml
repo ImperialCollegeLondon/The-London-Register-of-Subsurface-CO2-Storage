@@ -18,3 +18,8 @@ weight = 20
 name = 'Additional visualization'
 pageRef = '/visualization'
 weight = 30
+
+# [[menus.main]]
+# name = 'Report'
+# pageRef = '/report'
+# weight = 40
