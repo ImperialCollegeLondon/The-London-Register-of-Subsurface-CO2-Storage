@@ -1,8 +1,8 @@
 <div class="container mt-5">
 
-    <h2>Team</h2>
-    {{ $lastIndex := sub (len .Site.Data.team.member) 1 }}
-    {{ range $index, $member := .Site.Data.team.member }}
+    <h2>Web development</h2>
+    {{ $lastIndex := sub (len .Site.Data.web.member) 1 }}
+    {{ range $index, $member := .Site.Data.web.member }}
     <div class="row mt-1 mb-1  d-flex justify-content-center align-items-center list-item">
         <div class="col-lg-2 text-center">
             <div class="team-avatar rounded-3" style="background-image: url('{{ absURL "images/"}}{{.avatar}}');">
@@ -35,4 +35,5 @@
     {{ if lt $index $lastIndex }}
     <hr> {{ end }}
     {{ end }}
+
 </div>

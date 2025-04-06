@@ -9,6 +9,10 @@ layout: single
 
 {{< about_the_project/team >}}
 
+{{< about_the_project/web >}}
+
+{{< about_the_project/partner >}}
+
 {{< about_the_project/publication >}}
 
 {{< about_the_project/contact >}}

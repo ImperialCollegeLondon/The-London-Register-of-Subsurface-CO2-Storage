@@ -15,8 +15,8 @@ pageRef = '/project'
 weight = 20
 
 [[menus.main]]
-name = 'Additional visualization'
-pageRef = '/visualization'
+name = 'Additional visualisation'
+pageRef = '/visualisation'
 weight = 30
 
 # [[menus.main]]
