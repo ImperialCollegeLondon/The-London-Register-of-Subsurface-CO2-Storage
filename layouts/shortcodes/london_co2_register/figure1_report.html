@@ -461,7 +461,7 @@
     })
 
     const plot = () => {
-        const margin = { top: 20, right: 30, bottom: 30, left: 30 };
+        const margin = { top: 20, right: 30, bottom: 50, left: 30 };
         const width = 1600 - margin.left - margin.right;
         const height = 800 - margin.top - margin.bottom;
 
@@ -574,24 +574,29 @@
         // Append the horizontal axis.
         svg.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).tickSizeOuter(0)).style("font-size", 14).style("font-weight", "bold")
+            .call(d3.axisBottom(x).tickSizeOuter(0)).style("font-size", 20).style("font-weight", "bold")
+            .selectAll("text")
+            .attr("transform", "rotate(-45)")
+            .style("text-anchor", "end")     // Anchor text to the end for readability
+            .attr("dx", "-0.8em")            // Adjust position left-right
+            .attr("dy", "0.15em");
         // .call(g => g.selectAll(".domain").remove());
 
         // Append the vertical axis.
         svg.append("g")
             .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y).ticks(null, "s")).style("font-size", 14).style("font-weight", "bold")
+            .call(d3.axisLeft(y).ticks(null, "s")).style("font-size", 20).style("font-weight", "bold")
         // .call(g => g.selectAll(".domain").remove());
 
         svg.append("g")
-            .attr("transform", `translate(${width - margin.right},0)`).style("font-size", 14).style("font-weight", "bold")
+            .attr("transform", `translate(${width - margin.right},0)`).style("font-size", 20).style("font-weight", "bold")
             .call(d3.axisRight(yLine));
 
         svg.append("text")
             .attr("x", width / 2)
-            .attr("y", height + 20)  // Move title below the x-axis
+            .attr("y", height + 30)  // Move title below the x-axis
             .attr("text-anchor", "middle")
-            .attr("font-size", "16px")
+            .attr("font-size", "20px")
             .attr("font-weight", "bold")
             .attr("fill", "black")
             .text("Year");
@@ -601,7 +606,7 @@
             .attr("x", -height / 2)
             .attr("y", -15)  // Move title left of the y-axis
             .attr("text-anchor", "middle")
-            .attr("font-size", "16px")
+            .attr("font-size", "20px")
             .attr("font-weight", "bold")
             .attr("fill", "black")
             .text("CO₂ storage Volume");
@@ -611,7 +616,7 @@
             .attr("x", height / 2)
             .attr("y", -width - 15)  // Move title left of the y-axis
             .attr("text-anchor", "middle")
-            .attr("font-size", "16px")
+            .attr("font-size", "20px")
             .attr("font-weight", "bold")
             .attr("fill", "black")
             .text("Project Count");
