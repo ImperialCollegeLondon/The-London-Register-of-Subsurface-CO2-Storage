@@ -5,8 +5,10 @@ draft: false
 layout: single
 ---
 
-{{< london_co2_register/table1 >}}
+{{< london_co2_register/figure1 >}}
+
+{{< london_co2_register/download >}}
 
 ---
 
-{{< london_co2_register/figure1 >}}
+{{< london_co2_register/table1 >}}
