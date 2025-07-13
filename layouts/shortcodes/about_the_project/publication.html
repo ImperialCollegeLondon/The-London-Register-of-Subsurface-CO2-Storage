@@ -1,16 +1,17 @@
-<div class="container mt-5">
-    <h2>References</h2>
-    {{ $lastIndex := sub (len .Site.Data.publication.publication) 1 }}
-    {{ range $index, $pubication := .Site.Data.publication.publication }}
-    <div class="list-item">
-        {{ range $author := .author }}
-        {{.}}
+<div class="container-fluid" style="background-color: rgb(248, 249, 250);">
+    <div class="container mt-5" style="padding: 24px 0;">
+        <h2>References</h2>
+        {{ $lastIndex := sub (len .Site.Data.publication.publication) 1 }}
+        {{ range $index, $pubication := .Site.Data.publication.publication }}
+        <div class="list-item">
+            {{ range $author := .author }}
+            {{.}}
+            {{ end }}
+            {{ .date }} {{ .title }} {{.publisher}}
+            <a class="link-secondary link-opacity-25-hover" href="{{ .DOI }}" target="_blank">{{.DOI}}</a>
+        </div>
+        {{ if lt $index $lastIndex }}
+        <hr> {{ end }}
         {{ end }}
-        {{ .date }} {{ .title }} {{.publisher}}
-        <a class="link-secondary link-opacity-25-hover" href="{{ .DOI }}" target="_blank">{{.DOI}}</a>
     </div>
-    {{ if lt $index $lastIndex }}
-    <hr> {{ end }}
-    {{ end }}
-
 </div>
