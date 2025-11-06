@@ -7,6 +7,8 @@ layout: single
 
 {{< london_co2_register/figure1 >}}
 
+---
+
 {{< london_co2_register/download >}}
 
 ---
