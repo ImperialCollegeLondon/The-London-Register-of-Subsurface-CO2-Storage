@@ -9,7 +9,7 @@ layout: single
 
 ---
 
-{{< london_co2_register/download >}}
+{{< london_co2_register/zenodo >}}
 
 ---
 
