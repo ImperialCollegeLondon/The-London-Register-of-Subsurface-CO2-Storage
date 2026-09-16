@@ -195,7 +195,7 @@
         } else if (val == "-2") {
             return "__&sup2"
         } else if (typeof val == "number") {
-            return val.toFixed(2)
+            return val.toFixed(1)
         } else if (typeof val == "string") {
             return val.replace(/\\n/g, "<br>")
         } else {
