@@ -21,3 +21,4 @@ hugo.linux
 /cache/
 
 *.DS_Store
+/source_data
