@@ -1,8 +1,24 @@
 
 <div class="register-table-section">
-    <!-- <h3 style="flex: 1; text-align: center;">
-        The London Register of Subsurface CO₂ Storage
-    </h3> -->
+
+    <details class="register-table-collapse">
+        <summary class="register-table-summary">
+            <span class="register-table-summary-title">Table 1 — Annual CO₂ stored by project (Mt CO₂)</span>
+            <span class="register-table-summary-hint">Click to expand / collapse</span>
+        </summary>
+
+        <div class="register-table-toolbar">
+            <label>Country
+                <select id="country-filter" aria-label="Filter by Country">
+                    <option value="">All countries</option>
+                </select>
+            </label>
+            <label>Storage type
+                <select id="storage-type-filter" aria-label="Filter by Storage Type">
+                    <option value="">All storage types</option>
+                </select>
+            </label>
+        </div>
 
     <div class="register-table-scroll" tabindex="0" role="region" aria-label="CO2 storage project data">
             <table class="table1 register-data-table">
@@ -14,11 +30,7 @@
                     <tr>
                         <th data-n=0 class="table1-meta-cell">CO2 Storage Project</th>
                         <th data-n=1 class="table1-meta-cell">Project Operator</th>
-                        <th data-n=2 class="table1-meta-cell">
-                            <select id="storage-type-filter" aria-label="Filter by Storage Type">
-                                <option value="">Storage Type: All</option>
-                            </select>
-                        </th>
+                        <th data-n=2 class="table1-meta-cell">Storage Type</th>
                         <th data-n=3 class="table1-number-cell">1996</th>
                         <th data-n=4 class="table1-number-cell">1997</th>
                         <th data-n=5 class="table1-number-cell">1998</th>
@@ -186,6 +198,7 @@
         </p> -->
 
     </div>
+    </details>
 </div>
 <script>
 
@@ -210,6 +223,13 @@
     const rowTemplate = document.getElementById('table-row-record-template');
     const tableBody = document.getElementById('table-body');
     const storageTypeFilter = document.getElementById('storage-type-filter');
+    const countryFilter = document.getElementById('country-filter');
+    Object.keys(data).filter(c => c !== "TOTAL").sort().forEach(country => {
+        const option = document.createElement('option');
+        option.value = country;
+        option.textContent = country;
+        countryFilter.appendChild(option);
+    });
     const storageTypes = [...new Set(Object.values(data).flat()
         .filter(item => item.type === 'record')
         .map(item => item.storage_type || 'Not specified'))].sort();
@@ -223,7 +243,9 @@
     const renderTable = () => {
         tableBody.replaceChildren();
         const selectedType = storageTypeFilter.value;
+        const selectedCountry = countryFilter.value;
         Object.entries(data).forEach(([country, records]) => {
+        if (selectedCountry && country !== selectedCountry) return;
         const countryRecords = selectedType
             ? records.filter(item => item.type === 'record' &&
                 (item.storage_type || 'Not specified') === selectedType)
@@ -270,5 +292,6 @@
         });
     };
     storageTypeFilter.addEventListener('change', renderTable);
+    countryFilter.addEventListener('change', renderTable);
     renderTable();
 </script>

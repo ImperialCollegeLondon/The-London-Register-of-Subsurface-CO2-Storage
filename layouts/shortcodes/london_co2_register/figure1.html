@@ -25,7 +25,12 @@
 
 <template id="legend-grp-template">
     <details class="legend-grp">
-        <summary class="legend-country-toggle"></summary>
+        <summary class="legend-country-toggle">
+            <span class="legend-country-swatch"></span>
+            <span class="legend-country-name"></span>
+            <span class="legend-country-count"></span>
+            <span class="legend-country-chevron" aria-hidden="true"></span>
+        </summary>
         <div class="legend-grp-content">
             <button type="button" class="legend-grp-header">Show only this country / reset</button>
         </div>
@@ -34,7 +39,7 @@
 
 <template id="legend-btn-template">
     <div>
-        <div class="legend-btn" style="font-size: 10px;">
+        <div class="legend-btn">
             <span class="legend-color"></span>
             <span class="legend-text"></span>
         </div>
@@ -185,8 +190,11 @@
         }
 
         const countryToggle = grpClone.querySelector('.legend-country-toggle');
-        countryToggle.textContent = cat.name;
         countryToggle.style.setProperty('--country-color', cat.color);
+        countryToggle.querySelector('.legend-country-name').textContent = cat.name;
+        const grpProjectCount = figure1Meta.filter(item => item.category == cat.id).length;
+        countryToggle.querySelector('.legend-country-count').textContent =
+            `${grpProjectCount} ${grpProjectCount == 1 ? 'project' : 'projects'}`;
 
         const grpContent = grpClone.querySelector('.legend-grp-content');
         drawLegends(cat, grpContent);
