@@ -1,4 +1,4 @@
-{{- $ls := site.Data.livestats -}}
+{{- $ls := site.Data.livestats | default dict -}}
 {{- $available := and $ls $ls.generated (isset $ls "hits") (isset $ls "countries") -}}
 {{- $hits := newScratch -}}
 {{- $countries := newScratch -}}
@@ -11,13 +11,27 @@
     {{- range $ls.countries -}}{{- $countries.Add .name (int .count) -}}{{- end -}}
 {{- end -}}
 {{- $chips := slice
-    (dict "label" "2026 annual report downloads" "paths" (slice "download-London_Register_Annual_Report_2026_draft.pdf" "download-London_Register_Annual_Report_2026.pdf"))
-    (dict "label" "2026 methodology downloads" "paths" (slice "download-London_Register_Methodology_2026_draft.pdf" "download-London_Register_Methodology_2026.pdf"))
-    (dict "label" "2026 assurance report downloads" "paths" (slice "download-DNV_Data_Assurance_Summary_2026_draft.pdf" "download-DNV_Data_Assurance_Summary_2026.pdf"))
-    (dict "label" "Stakeholders table downloads" "paths" (slice "download-table1-csv"))
-    (dict "label" "Zenodo click-throughs" "paths" (slice "goto-zenodo"))
-    (dict "label" "Website visits" "total" $websiteVisits "description" "Recorded page visits, excluding download and link-click events.") -}}
-<section class="footer-stats" aria-labelledby="visitor-stats-heading">
+    (dict "id" "annual-2026" "label" "2026 annual report downloads" "paths" (slice "download-London_Register_Annual_Report_2026_draft.pdf" "download-London_Register_Annual_Report_2026.pdf"))
+    (dict "id" "methodology-2026" "label" "2026 methodology downloads" "paths" (slice "download-London_Register_Methodology_2026_draft.pdf" "download-London_Register_Methodology_2026.pdf"))
+    (dict "id" "assurance-2026" "label" "2026 assurance report downloads" "paths" (slice "download-DNV_Data_Assurance_Summary_2026_draft.pdf" "download-DNV_Data_Assurance_Summary_2026.pdf"))
+    (dict "id" "table-csv" "label" "Stakeholders table downloads" "paths" (slice "download-table1-csv"))
+    (dict "id" "zenodo" "label" "Zenodo click-throughs" "paths" (slice "goto-zenodo"))
+    (dict "id" "website-visits" "label" "Website visits" "total" $websiteVisits "description" "Recorded page visits, excluding download and link-click events.") -}}
+{{- $counterValues := newScratch -}}
+{{- range $chips -}}
+    {{- $sum := .total | default 0 -}}
+    {{- range .paths -}}{{- $sum = add $sum ($hits.Get . | default 0) -}}{{- end -}}
+    {{- $counterValues.Set .id $sum -}}
+{{- end -}}
+{{- $mapValues := newScratch -}}
+{{- range site.Data.visitor_map.countries -}}
+    {{- $count := $countries.Get .name | default 0 -}}
+    {{- range .aliases -}}{{- $count = add $count ($countries.Get . | default 0) -}}{{- end -}}
+    {{- $mapValues.Set .name $count -}}
+{{- end -}}
+{{- $snapshot := dict "version" 1 "available" (not (not $available)) "start" ($ls.start | default "2026-10-15") "generated" ($ls.generated | default "") "counts" $counterValues.Values "countries" $mapValues.Values "has_countries" (not (not $ls.countries)) -}}
+{{- $statsFile := resources.FromString "statistics.json" ($snapshot | jsonify) -}}
+<section class="footer-stats" aria-labelledby="visitor-stats-heading" data-stats-url="{{ $statsFile.RelPermalink }}" data-stats-generated="{{ $ls.generated | default "" }}">
     <div class="footer-stats-inner">
         <div class="footer-stats-summary">
             <h2 id="visitor-stats-heading">Website activity</h2>
@@ -30,11 +44,10 @@
             </p>
             <dl class="stats-grid">
                 {{- range $chips }}
-                {{- $sum := .total | default 0 -}}
-                {{- range .paths -}}{{- $sum = add $sum ($hits.Get . | default 0) -}}{{- end }}
+                {{- $sum := $counterValues.Get .id -}}
                 <div class="stat-chip">
                     <dt class="stat-label"{{ with .description }} title="{{ . }}"{{ end }}>{{ .label }}</dt>
-                    <dd class="stat-num">{{ if $available }}{{ lang.FormatNumber 0 $sum }}{{ else }}<span aria-label="Unavailable">&ndash;</span>{{ end }}</dd>
+                    <dd class="stat-num" data-stat-key="{{ .id }}">{{ if $available }}{{ lang.FormatNumber 0 $sum }}{{ else }}<span aria-label="Unavailable">&ndash;</span>{{ end }}</dd>
                 </div>
                 {{- end }}
             </dl>
@@ -45,8 +58,7 @@
                 <title id="visitor-map-title">Recorded visits by country</title>
                 <desc id="visitor-map-desc">Countries are shaded by the number of recorded visits. Hover over a country to see its count.</desc>
                 {{- range site.Data.visitor_map.countries -}}
-                    {{- $count := $countries.Get .name | default 0 -}}
-                    {{- range .aliases -}}{{- $count = add $count ($countries.Get . | default 0) -}}{{- end -}}
+                    {{- $count := $mapValues.Get .name -}}
                     {{- $level := "none" -}}
                     {{- if ge $count 100 -}}{{- $level = "high" -}}
                     {{- else if ge $count 10 -}}{{- $level = "medium" -}}
