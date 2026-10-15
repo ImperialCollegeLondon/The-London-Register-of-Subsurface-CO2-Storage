@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-15 16:18 UTC",
+  "generated": "2026-10-15 17:01 UTC",
   "start": "2026-10-15",
   "end": "2026-10-16",
   "hits": [
     {
       "path": "/The-London-Register-of-Subsurface-CO2-Storage",
-      "count": 7
+      "count": 8
     },
     {
       "path": "/The-London-Register-of-Subsurface-CO2-Storage/project",
@@ -13,6 +13,14 @@
     },
     {
       "path": "/The-London-Register-of-Subsurface-CO2-Storage/data",
+      "count": 3
+    },
+    {
+      "path": "/The-London-Register-of-Subsurface-CO2-Storage/index.html",
+      "count": 3
+    },
+    {
+      "path": "download-table1-csv",
       "count": 3
     },
     {
@@ -24,22 +32,18 @@
       "count": 2
     },
     {
-      "path": "/The-London-Register-of-Subsurface-CO2-Storage/index.html",
-      "count": 1
-    },
-    {
-      "path": "download-table1-csv",
-      "count": 1
-    },
-    {
       "path": "goto-zenodo",
+      "count": 2
+    },
+    {
+      "path": "download-DNV_Data_Quality_Assurance_2025.pdf",
       "count": 1
     }
   ],
   "countries": [
     {
       "name": "United Kingdom",
-      "count": 12
+      "count": 15
     },
     {
       "name": "United States",

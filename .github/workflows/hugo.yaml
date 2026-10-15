@@ -61,7 +61,7 @@ jobs:
       - name: Check statistics refresh logic
         run: |
           python -m unittest discover -s tests -v
-          node --test tests/test_activity.js
+          node --test tests/test_*.js
       - name: Restore last valid statistics snapshot
         uses: actions/cache/restore@v4
         with:

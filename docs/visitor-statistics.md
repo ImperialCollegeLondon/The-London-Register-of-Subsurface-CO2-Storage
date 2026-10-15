@@ -6,8 +6,14 @@ requires no JavaScript or external requests to display. Tracking new activity
 still requires GoatCounter to be reachable and allowed by the visitor's browser.
 The footer displays the snapshot date. GitHub Actions schedules a refresh every
 15 minutes, at minutes 7, 22, 37 and 52 of each hour (UTC). Scheduling and deployment
-can add a delay. Reload the page after the deployment to see the new snapshot.
-The page does not poll or update an already-open tab automatically.
+can add a delay. A page reload also retrieves the latest published snapshot.
+Open pages check the same-origin `statistics.json` every minute and when the tab
+becomes visible. This updates counters, map shading, hover counts and the snapshot
+time without a page reload. Both JSON and HTML use the same Hugo calculations.
+Invalid, incomplete, older or unavailable responses leave the displayed values
+unchanged. With JavaScript disabled, the build-time HTML still displays normally.
+GitHub scheduling may take longer than 15 minutes; the browser never invents
+increments while waiting for a published snapshot.
 
 The refresh workflow uses the GoatCounter API (`https://www.goatcounter.com/api.json`),
 including pagination for both hits and locations. The locations request includes
@@ -59,7 +65,7 @@ Checks:
 
 ```sh
 python3 -m unittest discover -s tests -v  # Python 3.11+
-node --test tests/test_activity.js
+node --test tests/test_*.js
 hugo --minify
 ```
 

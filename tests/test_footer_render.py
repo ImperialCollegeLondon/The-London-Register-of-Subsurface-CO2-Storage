@@ -55,6 +55,11 @@ class FooterRenderTests(unittest.TestCase):
             html = (source / "public/index.html").read_text()
             parser = FooterParser()
             parser.feed(html)
+            parser.snapshot = json.loads((source / "public/statistics.json").read_text())
+            self.assertEqual(list(parser.snapshot["counts"]), sorted(parser.snapshot["counts"]))
+            self.assertEqual(len(parser.snapshot["counts"]), 6)
+            self.assertNotIn("token", json.dumps(parser.snapshot).lower())
+            self.assertIn('data-stats-url=/subpath/statistics.json', html)
             return parser, html
 
     def test_only_2026_reports_count_in_the_correct_bucket(self):
@@ -78,6 +83,8 @@ class FooterRenderTests(unittest.TestCase):
             {"path": path, "count": count} for path, count in fixtures], "countries": [
                 {"name": "United Kingdom", "count": 10}, {"name": "Greece", "count": 1}]})
         self.assertEqual(parser.numbers, ["5", "11", "17", "19", "23", "32"])
+        self.assertEqual(parser.snapshot["counts"], {"annual-2026": 5, "methodology-2026": 11,
+            "assurance-2026": 17, "table-csv": 19, "zenodo": 23, "website-visits": 32})
         self.assertTrue(all(label.startswith("2026 ") for label in parser.labels[:3]))
         self.assertEqual(len(parser.countries), 175)
         self.assertEqual(parser.countries["United Kingdom"]["data-count"], "10")
@@ -93,6 +100,8 @@ class FooterRenderTests(unittest.TestCase):
         self.assertEqual(parser.countries["China"]["data-count"], "12")
         self.assertIn("visits-medium", parser.countries["China"]["class"])
         self.assertNotIn("Taiwan", parser.countries)
+        self.assertEqual(parser.snapshot["countries"]["China"], 12)
+        self.assertNotIn("Taiwan", parser.snapshot["countries"])
         self.assertIn("China: 12 recorded visits", html)
         self.assertNotIn("Taiwan:", html)
         self.assertNotIn("map-legend", html)
@@ -107,7 +116,10 @@ class FooterRenderTests(unittest.TestCase):
     def test_unavailable_and_empty_snapshots_are_distinct(self):
         parser, html = self.render(None)
         self.assertEqual(parser.numbers, ["–"] * 6)
+        self.assertIs(parser.snapshot["available"], False)
         self.assertIn("Statistics are not available yet", html)
         parser, html = self.render({"generated": "2026-10-15 14:22 UTC", "hits": [], "countries": []})
         self.assertEqual(parser.numbers, ["0"] * 6)
         self.assertIn("No country visits recorded", html)
+        self.assertIs(parser.snapshot["available"], True)
+        self.assertIs(parser.snapshot["has_countries"], False)
