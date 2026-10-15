@@ -9,7 +9,13 @@
             <h3 class="downloads-year">{{ $year }} edition</h3>
             {{- $docs := where $reg.doc "year" $year }}
             {{- if not $docs }}
-            <div class="downloads-placeholder">{{ $year }} materials will be published soon.</div>
+            <div class="downloads-placeholder">
+                {{- if eq $year "2026" -}}
+                The 2026 materials will be published on 25 October 2026 at 12:01 p.m. AoE (Anywhere on Earth, UTC−12).
+                {{- else -}}
+                {{ $year }} materials will be published soon.
+                {{- end -}}
+            </div>
             {{- end }}
             <div class="downloads-cards">
                 {{- range $docs }}
@@ -33,7 +39,6 @@
     <p class="downloads-db">
         The full Register can be downloaded in database form from
         <a href="{{ $reg.meta.zenodo }}" target="_blank" rel="noopener" data-goatcounter-no-session="1" data-goatcounter-click="goto-zenodo" data-goatcounter-title="Zenodo database">{{ $reg.meta.zenodo }}</a>.
-        The current data release is <strong>{{ $reg.meta.release }}</strong> ({{ $reg.meta.updated }}).
     </p>
 
     <h2 class="downloads-heading">How to cite</h2>
