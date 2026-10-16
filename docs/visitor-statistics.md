@@ -1,7 +1,10 @@
 # Footer statistics
 
 Hugo renders the counters and SVG paths into every page. Country counts appear
-in map hover titles; no country-name/count list is displayed. The footer
+in map hover titles. With JavaScript enabled, tapping or hovering a country shows
+a single visible count tooltip; no country-name/count list is displayed. Tab enters
+the map, arrow keys move between countries, and Escape or a tap outside dismisses
+the tooltip. Page pinch-to-zoom remains available for small map regions. The footer
 requires no JavaScript or external requests to display. Tracking new activity
 still requires GoatCounter to be reachable and allowed by the visitor's browser.
 The footer displays the snapshot date. GitHub Actions schedules a refresh every
@@ -9,7 +12,9 @@ The footer displays the snapshot date. GitHub Actions schedules a refresh every
 can add a delay. A page reload also retrieves the latest published snapshot.
 Open pages check the same-origin `statistics.json` every minute and when the tab
 becomes visible. This updates counters, map shading, hover counts and the snapshot
-time without a page reload. Both JSON and HTML use the same Hugo calculations.
+time without a page reload. The selected country tooltip and accessible labels also
+update from the same rendered titles. Unavailable statistics remain unavailable
+in the tooltip rather than appearing as zero. Both JSON and HTML use the same Hugo calculations.
 Invalid, incomplete, older or unavailable responses leave the displayed values
 unchanged. With JavaScript disabled, the build-time HTML still displays normally.
 GitHub scheduling may take longer than 15 minutes; the browser never invents
