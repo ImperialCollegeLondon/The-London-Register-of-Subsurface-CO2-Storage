@@ -654,6 +654,11 @@ body { font-family: "Inter", "Avenir Next", Avenir, "Segoe UI", sans-serif; }
 .stat-num { order: -1; color: #fff; font-size: 1.9rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; margin: 0; }
 .stat-map { min-width: 0; margin: 0; }
 #visitor-map { display: block; width: 100%; height: auto; max-width: 640px; margin-inline: auto; }
+.visitor-map-canvas { position: relative; }
+.visitor-map-tooltip { position: absolute; bottom: .25rem; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 1rem); padding: .55rem .85rem; border: 1px solid #91b9c9; border-radius: .5rem; background: #edf5f7; color: #142f40; font-size: .85rem; font-weight: 600; line-height: 1.5; text-align: center; pointer-events: none; box-shadow: 0 2px 10px #0004; }
+.visitor-map-hint { color: #b6c9d3; font-size: .75rem; line-height: 1.6; margin: .5rem 0 0; }
+.visitor-country[role="button"] { cursor: pointer; }
+.visitor-country[data-selected], .visitor-country:focus-visible { stroke: #fff; stroke-width: 1.8; outline: none; }
 .visitor-country { stroke: #142f40; stroke-width: .6; vector-effect: non-scaling-stroke; }
 .visits-none { fill: #365366; background: #365366; }
 .visits-low { fill: #75b6b4; background: #75b6b4; }
