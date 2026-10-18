@@ -11,7 +11,23 @@
             {{- if not $docs }}
             <div class="downloads-placeholder">
                 {{- if eq $year "2026" -}}
-                The 2026 materials will be published on 25 October 2026 at 12:01 p.m. AoE (Anywhere on Earth, UTC−12).
+                <p class="release-announcement"><span class="release-announcement-prefix">The 2026 materials will be published on </span><time id="release-2026-time" datetime="2026-10-25T12:01:00-12:00">25 October 2026 at 12:01 p.m. AoE (Anywhere on Earth, UTC−12)</time>.</p>
+                <div class="release-countdown" data-release-time="release-2026-time" role="timer" aria-live="off" hidden>
+                    <div class="release-countdown-grid" aria-hidden="true">
+                        {{- range slice "Days" "Hours" "Minutes" "Seconds" }}
+                        <div class="release-countdown-unit" data-unit="{{ lower . }}">
+                            <div class="release-flip-card">
+                                <span class="release-flip-value">00</span>
+                                <span class="release-flip-leaf release-flip-previous">00</span>
+                                <span class="release-flip-leaf release-flip-top">00</span>
+                                <span class="release-flip-leaf release-flip-bottom">00</span>
+                            </div>
+                            <span class="release-countdown-label">{{ . }}</span>
+                        </div>
+                        {{- end }}
+                    </div>
+                </div>
+                <p class="release-countdown-status" role="status" hidden></p>
                 {{- else -}}
                 {{ $year }} materials will be published soon.
                 {{- end -}}
@@ -52,3 +68,5 @@
     </details>
 
 </div>
+
+<script defer src="{{ relURL "js/release-countdown.js" }}"></script>
