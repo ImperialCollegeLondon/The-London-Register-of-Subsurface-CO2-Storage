@@ -1,4 +1,4 @@
-// AoE is UTC-12. The <time datetime> supplies the absolute publication instant.
+// The timezone-aware <time datetime> supplies the absolute publication instant.
 (() => {
     'use strict';
     document.querySelectorAll('.release-countdown[data-release-time]').forEach(timer => {

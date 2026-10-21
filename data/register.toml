@@ -2,7 +2,7 @@
 release = "v9"
 updated = "7 October 2026"
 updated_short = "07-Oct-26"
-zenodo = "https://zenodo.org/records/18016847"
+zenodo = "https://zenodo.org/records/23400216"
 raeng = "https://raeng.org.uk/programmes-and-prizes/programmes/uk-grants-and-prizes/support-for-research/research-awardees/research-chairs-and-senior-research-fellowships-awardees/cohort-15-and-16-2022-2023/dr-samuel-krevor-imperial-college-london/"
 goatcounter = "londonco2storage"
 # Visitor map: create a GoatCounter API token (Settings -> API, no extra permissions) and paste it here.

@@ -23,7 +23,7 @@ function setup(now, reducedMotion = false) {
         setAttribute(name, value) { this[name] = value; } };
     const listeners = {};
     const document = { visibilityState: 'visible', querySelectorAll: () => [timer],
-        getElementById: () => ({ dateTime: '2026-10-25T12:01:00-12:00' }),
+        getElementById: () => ({ dateTime: '2026-10-26T08:01:00+08:00' }),
         addEventListener: (name, fn) => { listeners[name] = fn; } };
     vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../static/js/release-countdown.js'), 'utf8'), {
         document, window: { matchMedia: () => ({ matches: reducedMotion }) },
@@ -35,7 +35,7 @@ function setup(now, reducedMotion = false) {
     return { state, timer, status, prefix, units, document, listeners, values };
 }
 
-test('12:01 pm AoE counts down to the next day at 00:01 UTC', () => {
+test('08:01 Perth counts down to 00:01 UK time and UTC on 26 October', () => {
     const { values, timer } = setup(target - (86400 + 3600 + 60 + 1) * 1000);
     assert.deepEqual(values(), ['01', '01', '01', '01']);
     assert.equal(timer.hidden, false);
