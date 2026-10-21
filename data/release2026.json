@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "release_at": "2026-10-25T23:55:00Z",
+  "display_time": "26 October 2026 at 7:55 a.m. Perth time (25 October at 11:55 p.m. UK time)",
+  "github_repository": "ImperialCollegeLondon/The-London-Register-of-Subsurface-CO2-Storage",
+  "tag": "2026-materials",
+  "documents": [
+    {
+      "id": "annual-2026",
+      "title": "Annual Report 2026",
+      "filename": "London_Register_Annual_Report_2026.pdf",
+      "cover": "images/covers/cover_ar_2026.png",
+      "size": 1861404,
+      "sha256": "85098a4bb1b537b4bf1cbc32520e3f3df02f8774d6e7c63d236ba68875bdbdb6"
+    },
+    {
+      "id": "assurance-2026",
+      "title": "DNV Assessment Report 2026",
+      "filename": "DNV_Data_Assurance_Summary_2026.pdf",
+      "cover": "images/covers/cover_dnv_2026.png",
+      "size": 1107286,
+      "sha256": "7a63a7abdfc0830c4cb15b2db5bd45b2cef4fcefeff38a0b1f1877c714f61221"
+    },
+    {
+      "id": "methodology-2026",
+      "title": "Methodology Report 2026",
+      "filename": "London_Register_Methodology_2026.pdf",
+      "cover": "images/covers/cover_meth_2026.png",
+      "size": 800886,
+      "sha256": "542a754fe2836ea638723721907d6436e9d6c24bdd75623ace4f3af61c2f031d"
+    }
+  ]
+}

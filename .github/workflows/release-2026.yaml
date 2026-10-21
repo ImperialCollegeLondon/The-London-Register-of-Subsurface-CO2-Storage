@@ -1,0 +1,54 @@
+name: Publish embargoed 2026 reports
+
+on:
+  schedule:
+    # All cron times are UTC. Warm up 45 minutes before 25 Oct 23:55 UTC.
+    - cron: '10,40,55 23 25 10 *'
+    # Recovery attempts if the initial scheduled runner/API was unavailable.
+    - cron: '10,25,40,55 0 26 10 *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Validate the private upload, or arm publication (only within one hour of release)'
+        required: true
+        default: validate
+        type: choice
+        options:
+          - validate
+          - publish
+
+permissions: {}
+
+# Waiting for the embargo must not block the 15-minute statistics deployment.
+concurrency:
+  group: embargo-release-2026
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test embargo guards
+        run: python -m unittest discover -s tests -p 'test_release_2026.py' -v
+      - name: Validate or publish at the server-checked deadline
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_MODE: ${{ github.event.inputs.mode || 'publish' }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" = schedule ]; then
+            python scripts/release_2026.py publish --scheduled
+          else
+            python scripts/release_2026.py "$RELEASE_MODE"
+          fi

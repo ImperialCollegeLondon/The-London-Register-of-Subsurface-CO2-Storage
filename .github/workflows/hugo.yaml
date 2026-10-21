@@ -79,6 +79,8 @@ jobs:
         with:
           path: data/livestats.json
           key: visitor-stats-v2-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Verify public report availability
+        run: python scripts/release_2026.py status
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -89,6 +91,8 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Exclude embargoed PDFs from the public artifact
+        run: python scripts/release_2026.py check-public --directory public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -7,6 +7,7 @@
         if (!Number.isFinite(deadline)) return;
         const parent = timer.closest('.downloads-placeholder');
         const status = parent.querySelector('.release-countdown-status');
+        const edition = timer.closest('.release-edition');
         const units = Array.from(timer.querySelectorAll('[data-unit]'));
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         let timeout;
@@ -22,11 +23,18 @@
         const tick = () => {
             clearTimeout(timeout);
             if (document.visibilityState === 'hidden') return;
+            if (edition && edition.dataset.releaseAvailable === 'true') {
+                timer.hidden = true;
+                parent.querySelector('.release-announcement-prefix').textContent = 'Publication time: ';
+                status.textContent = 'The 2026 materials are now available.';
+                status.hidden = false;
+                return;
+            }
             const remaining = deadline - Date.now();
             if (remaining <= 0) {
                 timer.hidden = true;
                 parent.querySelector('.release-announcement-prefix').textContent = 'Scheduled publication: ';
-                status.textContent = 'The scheduled publication time has arrived. Please check this page for the 2026 materials.';
+                status.textContent = 'Publication is pending. Downloads will be enabled once the files are available.';
                 status.hidden = false;
                 return;
             }
@@ -63,5 +71,6 @@
         };
         tick();
         document.addEventListener('visibilitychange', tick);
+        if (edition) edition.addEventListener('release:available', tick);
     });
 })();

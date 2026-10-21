@@ -5,13 +5,25 @@
 
     <div class="downloads-row">
         {{- range $year := slice "2026" "2025" }}
-        <div class="downloads-group">
-            <h3 class="downloads-year">{{ $year }} edition</h3>
-            {{- $docs := where $reg.doc "year" $year }}
-            {{- if not $docs }}
-            <div class="downloads-placeholder">
-                {{- if eq $year "2026" -}}
-                <p class="release-announcement"><span class="release-announcement-prefix">The 2026 materials will be published on </span><time id="release-2026-time" datetime="2026-10-26T08:01:00+08:00">26 October 2026 at 8:01 a.m. Perth time (12:01 a.m. UK time)</time>.</p>
+        {{- if and (eq $year "2026") site.Data.release2026 }}
+        {{- $release := site.Data.release2026 -}}
+        {{- $status := site.Data.release2026status | default dict -}}
+        {{- $ready := false -}}
+        {{- $expectedDocuments := slice -}}
+        {{- range $release.documents -}}
+            {{- $expectedDocuments = $expectedDocuments | append (dict "filename" .filename "size" .size "sha256" .sha256) -}}
+        {{- end -}}
+        {{- $matchingDocuments := eq ($expectedDocuments | jsonify) (($status.documents | default slice) | jsonify) -}}
+        {{- if and $matchingDocuments $status.available (eq $status.release_at $release.release_at) $status.checked_at -}}
+            {{- $ready = and (ge (time.AsTime $status.checked_at).Unix (time.AsTime $release.release_at).Unix) (ge now.Unix (time.AsTime $release.release_at).Unix) -}}
+        {{- end }}
+        <section class="downloads-group release-edition" aria-labelledby="release-2026-heading"
+            data-release-at="{{ $release.release_at }}" data-release-available="{{ $ready }}"
+            data-release-status-url="{{ relURL "release-2026-status.json" }}"
+            data-release-repository="{{ $release.github_repository }}" data-release-tag="{{ $release.tag }}">
+            <h3 id="release-2026-heading" class="downloads-year">2026 edition</h3>
+            <div class="downloads-placeholder release-notice">
+                <p class="release-announcement"><span class="release-announcement-prefix">{{ if $ready }}Publication time: {{ else }}The 2026 materials will be published on {{ end }}</span><time id="release-2026-time" datetime="{{ $release.release_at }}">{{ $release.display_time }}</time>.</p>
                 <div class="release-countdown" data-release-time="release-2026-time" role="timer" aria-live="off" hidden>
                     <div class="release-countdown-grid" aria-hidden="true">
                         {{- range slice "Days" "Hours" "Minutes" "Seconds" }}
@@ -27,11 +39,34 @@
                         {{- end }}
                     </div>
                 </div>
-                <p class="release-countdown-status" role="status" hidden></p>
-                {{- else -}}
-                {{ $year }} materials will be published soon.
-                {{- end -}}
+                <p class="release-countdown-status" role="status"{{ if not $ready }} hidden{{ end }}>{{ if $ready }}The 2026 materials are now available.{{ end }}</p>
             </div>
+            <div class="downloads-cards release-cards">
+                {{- range $release.documents }}
+                {{- $url := printf "https://github.com/%s/releases/download/%s/%s" $release.github_repository $release.tag .filename -}}
+                {{- if $ready }}
+                <a class="download-card release-document" href="{{ $url }}" download="{{ .filename }}"
+                    data-document-filename="{{ .filename }}" data-document-size="{{ .size }}" data-document-sha256="{{ .sha256 }}" data-document-title="{{ .title }}"
+                    data-goatcounter-no-session="1" data-goatcounter-click="download-{{ .filename }}" data-goatcounter-title="{{ .title }}">
+                {{- else }}
+                <article class="download-card release-document is-embargoed"
+                    data-document-filename="{{ .filename }}" data-document-size="{{ .size }}" data-document-sha256="{{ .sha256 }}" data-document-title="{{ .title }}">
+                {{- end }}
+                    <img class="download-cover" src="{{ relURL .cover }}" alt="Cover of {{ .title }}" loading="lazy">
+                    <div class="download-card-body">
+                        <div class="download-title">{{ .title }}</div>
+                        <div class="download-hint release-download-state">{{ if $ready }}Download PDF{{ else }}Embargo{{ end }}</div>
+                    </div>
+                {{- if $ready }}</a>{{ else }}</article>{{ end }}
+                {{- end }}
+            </div>
+        </section>
+        {{- else }}
+        <div class="downloads-group">
+            <h3 class="downloads-year">{{ $year }} edition</h3>
+            {{- $docs := where $reg.doc "year" $year }}
+            {{- if not $docs }}
+            <div class="downloads-placeholder">{{ $year }} materials will be published soon.</div>
             {{- end }}
             <div class="downloads-cards">
                 {{- range $docs }}
@@ -48,6 +83,7 @@
                 {{- end }}
             </div>
         </div>
+        {{- end }}
         {{- end }}
     </div>
 
@@ -70,3 +106,4 @@
 </div>
 
 <script defer src="{{ relURL "js/release-countdown.js" }}"></script>
+<script defer src="{{ relURL "js/release-downloads.js" }}"></script>

@@ -26,3 +26,10 @@ hugo.linux
 # Python verification caches
 __pycache__/
 *.py[cod]
+
+# Availability is generated from the public Release API during each build.
+/data/release2026status.json
+/static/release-2026-status.json
+
+# Embargoed 2026 PDFs live only in a private draft GitHub Release.
+/static/downloads/*2026*.pdf

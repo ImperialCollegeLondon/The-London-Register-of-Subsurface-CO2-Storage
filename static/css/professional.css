@@ -636,7 +636,24 @@ body { font-family: "Inter", "Avenir Next", Avenir, "Segoe UI", sans-serif; }
   text-align: center;
 }
 
-/* AoE release countdown; all timing uses the absolute date in the time element. */
+/* Embargo cards stay non-interactive until the published assets are verified. */
+.release-edition { flex: 1 1 630px; max-width: 680px; }
+.release-notice { margin-bottom: 1.25rem; }
+.release-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+.release-cards .download-card { width: 100%; max-width: none; margin: 0; }
+.release-document .download-card-body { display: flex; flex-direction: column; flex: 1; }
+.release-document .download-title { flex: 1; }
+.release-document .download-cover { object-fit: contain; }
+.release-download-state { align-self: flex-start; padding: .22rem .5rem; border-radius: 4px; background: #e4f2ee; color: #185d53; font-size: .7rem; font-weight: 700; margin-top: .6rem; }
+.release-document.is-embargoed { cursor: default; }
+.release-document.is-embargoed:hover { transform: none; box-shadow: none; }
+.release-document.is-embargoed .release-download-state { background: #edf0f2; color: #526773; }
+@media (max-width: 480px) {
+  .release-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .release-document .download-title { font-size: .8rem; }
+}
+
+/* Release countdown; all timing uses the absolute date in the time element. */
 .release-announcement { margin: 0; }
 .release-countdown { margin: 1.5rem auto 0; max-width: 360px; }
 .release-countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.35rem, 1.2vw, .75rem); }

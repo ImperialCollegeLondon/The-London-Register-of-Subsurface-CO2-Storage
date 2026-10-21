@@ -3,9 +3,9 @@ const { test } = require('node:test');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const target = Date.parse('2026-10-26T00:01:00Z');
+const target = Date.parse('2026-10-25T23:55:00Z');
 
-function setup(now, reducedMotion = false) {
+function setup(now, reducedMotion = false, available = false) {
     const state = { now, scheduled: null };
     const units = ['days', 'hours', 'minutes', 'seconds'].map(name => {
         const classes = new Set();
@@ -18,12 +18,15 @@ function setup(now, reducedMotion = false) {
     const status = { hidden: true, textContent: '' };
     const prefix = { textContent: 'The 2026 materials will be published on ' };
     const parent = { querySelector: selector => selector === '.release-countdown-status' ? status : prefix };
+    const editionListeners = {};
+    const edition = { dataset: { releaseAvailable: String(available) },
+        addEventListener: (type, callback) => { editionListeners[type] = callback; } };
     const timer = { hidden: true, dataset: { releaseTime: 'release-2026-time' },
-        closest: () => parent, querySelectorAll: () => units,
+        closest: selector => selector === '.release-edition' ? edition : parent, querySelectorAll: () => units,
         setAttribute(name, value) { this[name] = value; } };
     const listeners = {};
     const document = { visibilityState: 'visible', querySelectorAll: () => [timer],
-        getElementById: () => ({ dateTime: '2026-10-26T08:01:00+08:00' }),
+        getElementById: () => ({ dateTime: '2026-10-26T07:55:00+08:00' }),
         addEventListener: (name, fn) => { listeners[name] = fn; } };
     vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../static/js/release-countdown.js'), 'utf8'), {
         document, window: { matchMedia: () => ({ matches: reducedMotion }) },
@@ -32,10 +35,10 @@ function setup(now, reducedMotion = false) {
         clearTimeout: () => { state.scheduled = null; },
     });
     const values = () => units.map(unit => unit.children['.release-flip-value'].textContent);
-    return { state, timer, status, prefix, units, document, listeners, values };
+    return { state, timer, status, prefix, units, document, listeners, values, edition, editionListeners };
 }
 
-test('08:01 Perth counts down to 00:01 UK time and UTC on 26 October', () => {
+test('07:55 Perth on 26 October counts down to 23:55 UK time and UTC on 25 October', () => {
     const { values, timer } = setup(target - (86400 + 3600 + 60 + 1) * 1000);
     assert.deepEqual(values(), ['01', '01', '01', '01']);
     assert.equal(timer.hidden, false);
@@ -51,7 +54,7 @@ test('last millisecond does not expire early; expiry stops without claiming file
     assert.equal(timer.hidden, true);
     assert.equal(state.scheduled, null);
     assert.equal(status.hidden, false);
-    assert.match(status.textContent, /scheduled publication time has arrived/);
+    assert.match(status.textContent, /Publication is pending/);
     assert.doesNotMatch(status.textContent, /now available|download now/i);
     const late = setup(target + 100000);
     assert.equal(late.timer.hidden, true);
@@ -73,4 +76,17 @@ test('reduced-motion visitors get current numbers without flip animation', () =>
     state.now += 1000; state.scheduled.fn();
     assert.deepEqual(values(), ['00', '00', '00', '09']);
     assert(units.every(unit => !unit.card.classList.contains('is-flipping')));
+});
+
+
+test('only verified availability stops the countdown and announces the download, even with a slow client clock', () => {
+    const result = setup(target - 10000);
+    result.edition.dataset.releaseAvailable = 'true';
+    result.editionListeners['release:available']();
+    assert.equal(result.timer.hidden, true);
+    assert.equal(result.state.scheduled, null);
+    assert.match(result.status.textContent, /now available/);
+    const ready = setup(target - 10000, false, true);
+    assert.equal(ready.timer.hidden, true);
+    assert.equal(ready.state.scheduled, null);
 });
