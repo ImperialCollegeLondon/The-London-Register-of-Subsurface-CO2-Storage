@@ -118,6 +118,13 @@ note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data
 
 [[news]]
 outlet = "Global CCS Institute"
+date = "October 2026"
+title = "The London Register cited in the Global Status of CCS 2026 report"
+url = "https://www.globalccsinstitute.com/global-status-of-ccs/"
+logo = "images/news/globalccsinstitute.png"
+
+[[news]]
+outlet = "Global CCS Institute"
 date = "June 2026"
 title = "London Climate Action Week 2026 recap"
 url = "https://www.globalccsinstitute.com/lcaw2026recap/"
