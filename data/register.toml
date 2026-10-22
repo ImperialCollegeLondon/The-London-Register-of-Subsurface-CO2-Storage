@@ -118,62 +118,70 @@ note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data
 
 [[news]]
 outlet = "Global CCS Institute"
-date = "October 2026"
+published = "2026-10-20"
 title = "The London Register cited in the Global Status of CCS 2026 report"
 url = "https://www.globalccsinstitute.com/global-status-of-ccs/"
 logo = "images/news/globalccsinstitute.png"
 
 [[news]]
 outlet = "Global CCS Institute"
-date = "June 2026"
+published = "2026-07-31"
 title = "London Climate Action Week 2026 recap"
 url = "https://www.globalccsinstitute.com/lcaw2026recap/"
 logo = "images/news/globalccsinstitute.png"
 
 [[news]]
 outlet = "WBCSD"
-date = "2026"
+published = "2026-02-26"
 title = "Informing the deployment of carbon capture, utilization and storage"
 url = "https://www.wbcsd.org/resources/informing-the-deployment-of-carbon-capture-utilization-and-storage/"
+logo = "images/news/wbcsd.png"
 
 [[news]]
 outlet = "E&T Magazine (IET)"
-date = "November 2025"
+published = "2025-11-18"
 title = "383 million tonnes of CO2 permanently stored underground since 1996, new report finds"
 url = "https://eandt.theiet.org/2025/11/18/383-million-tonnes-co2-permanently-stored-underground-1996-new-report-finds"
+logo = "images/news/iet.png"
 
 [[news]]
 outlet = "The Guardian"
-date = "November 2025"
+published = "2025-11-17"
 title = "COP30 live blog - coverage of the Register's first complete global storage record"
 url = "https://www.theguardian.com/environment/live/2025/nov/17/cop30-belem-brazil-global-warming-latest-news-updates?filterKeyEvents=false&page=with%3Ablock-691b2ab48f08c51b9dbdeebd"
+logo = "images/news/guardian.png"
 
 [[news]]
 outlet = "Imperial College London"
-date = "November 2025"
+published = "2025-11-17"
 title = "First complete record of global underground CO2 storage"
 url = "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2025/first-complete-record-global-underground-co2/"
+logo = "images/news/imperial.png"
 
 [[news]]
 outlet = "IEAGHG"
-date = "November 2025"
+published = "2025-11-17"
 title = "383 million tonnes CO2 permanently stored underground"
 url = "https://ieaghg.org/news/383-million-tonnes-co2-permanently-stored-underground/"
+logo = "images/news/ieaghg.png"
 
 [[news]]
 outlet = "Norwegian SciTech News"
-date = "November 2025"
+published = "2025-11-17"
 title = "First complete record of global underground CO2 storage"
 url = "https://norwegianscitechnews.com/2025/11/first-complete-record-of-global-underground-co%E2%82%82-storage/"
+logo = "images/news/norwegianscitechnews.png"
 
 [[news]]
 outlet = "Carbon Herald"
-date = "November 2025"
+published = "2025-11-18"
 title = "London Register of Subsurface CO2 Storage just launched"
 url = "https://carbonherald.com/london-register-of-subsurface-co2-storage-just-launched/"
+logo = "images/news/carbonherald.png"
 
 [[news]]
 outlet = "Protea"
-date = "November 2025"
+published = "2025-12-01"
 title = "Global underground CO2 storage data offers hope amid rising emissions"
 url = "https://www.protea.ltd.uk/global-underground-co2-storage-data-offers-hope-amid-rising-emissions"
+logo = "images/news/protea.png"

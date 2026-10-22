@@ -2,7 +2,7 @@
 title: "In the News"
 date: 2026-10-07T00:00:00Z
 draft: false
-layout: single
+layout: news
 ---
 
 Selected media coverage of the London Register of Subsurface CO₂ Storage and its annual findings.

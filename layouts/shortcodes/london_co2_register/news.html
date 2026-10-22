@@ -1,18 +1,22 @@
 {{- $reg := site.Data.register }}
-<div class="news-list">
-    {{- range $reg.news }}
-    {{- $u := urls.Parse .url }}
-    <a class="news-item" href="{{ .url }}" target="_blank" rel="noopener">
-        {{- $logo := printf "https://www.google.com/s2/favicons?domain=%s&sz=64" $u.Host }}
-        {{- with .logo }}{{ $logo = relURL . }}{{ end }}
-        <img class="news-logo" src="{{ $logo }}" width="34" height="34" alt="" loading="lazy" aria-hidden="true">
-        <div class="news-body">
-            <div class="news-meta">
+<ol class="news-list" role="list" aria-label="News, newest first">
+    {{- range sort $reg.news "published" "desc" }}
+    <li>
+        <a class="news-item" href="{{ .url }}" target="_blank" rel="noopener">
+            <span class="news-brand" aria-hidden="true">
+                {{- with .logo }}
+                <img class="news-logo" src="{{ relURL . }}" width="32" height="32" alt="" loading="lazy">
+                {{- else }}
+                <span class="news-logo-fallback">{{ substr .outlet 0 1 }}</span>
+                {{- end }}
+            </span>
+            <div class="news-body">
                 <span class="news-outlet">{{ .outlet }}</span>
-                {{- with .date }}<span class="news-date">{{ . }}</span>{{ end }}
+                <h2 class="news-title">{{ .title }}</h2>
             </div>
-            <div class="news-title">{{ .title }} <span class="news-ext" aria-hidden="true">&#8599;</span></div>
-        </div>
-    </a>
+            <time class="news-date" datetime="{{ .published }}">{{ time.Format "02 Jan 2006" .published }}</time>
+            <span class="news-ext" aria-hidden="true">&#8599;</span>
+        </a>
+    </li>
     {{- end }}
-</div>
+</ol>
