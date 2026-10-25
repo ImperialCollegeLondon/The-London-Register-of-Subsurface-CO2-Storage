@@ -22,25 +22,6 @@
             data-release-status-url="{{ relURL "release-2026-status.json" }}"
             data-release-repository="{{ $release.github_repository }}" data-release-tag="{{ $release.tag }}">
             <h3 id="release-2026-heading" class="downloads-year">2026 edition</h3>
-            <div class="downloads-placeholder release-notice">
-                <p class="release-announcement"><span class="release-announcement-prefix">{{ if $ready }}Publication time: {{ else }}The 2026 materials will be published on {{ end }}</span><time id="release-2026-time" datetime="{{ $release.release_at }}">{{ $release.display_time }}</time>.</p>
-                <div class="release-countdown" data-release-time="release-2026-time" role="timer" aria-live="off" hidden>
-                    <div class="release-countdown-grid" aria-hidden="true">
-                        {{- range slice "Days" "Hours" "Minutes" "Seconds" }}
-                        <div class="release-countdown-unit" data-unit="{{ lower . }}">
-                            <div class="release-flip-card">
-                                <span class="release-flip-value">00</span>
-                                <span class="release-flip-leaf release-flip-previous">00</span>
-                                <span class="release-flip-leaf release-flip-top">00</span>
-                                <span class="release-flip-leaf release-flip-bottom">00</span>
-                            </div>
-                            <span class="release-countdown-label">{{ . }}</span>
-                        </div>
-                        {{- end }}
-                    </div>
-                </div>
-                <p class="release-countdown-status" role="status"{{ if not $ready }} hidden{{ end }}>{{ if $ready }}The 2026 materials are now available.{{ end }}</p>
-            </div>
             <div class="downloads-cards release-cards">
                 {{- range $release.documents }}
                 {{- $url := printf "https://github.com/%s/releases/download/%s/%s" $release.github_repository $release.tag .filename -}}
@@ -105,5 +86,4 @@
 
 </div>
 
-<script defer src="{{ relURL "js/release-countdown.js" }}"></script>
-<script defer src="{{ relURL "js/release-downloads.js" }}"></script>
+<script defer src="{{ relURL "js/release-downloads.js" }}?v=2"></script>

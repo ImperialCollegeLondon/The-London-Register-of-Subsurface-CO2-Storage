@@ -55,11 +55,15 @@
                 item.element.replaceWith(link);
             });
             edition.dataset.releaseAvailable = 'true';
-            edition.querySelector('.release-countdown').hidden = true;
+            const countdown = edition.querySelector('.release-countdown');
+            if (countdown) countdown.hidden = true;
             const status = edition.querySelector('.release-countdown-status');
-            status.textContent = 'The 2026 materials are now available.';
-            status.hidden = false;
-            edition.querySelector('.release-announcement-prefix').textContent = 'Publication time: ';
+            if (status) {
+                status.textContent = 'The 2026 materials are now available.';
+                status.hidden = false;
+            }
+            const prefix = edition.querySelector('.release-announcement-prefix');
+            if (prefix) prefix.textContent = 'Publication time: ';
             edition.dispatchEvent(new Event('release:available'));
             clearTimeout(timeout);
         };
