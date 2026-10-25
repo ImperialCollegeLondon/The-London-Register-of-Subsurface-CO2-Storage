@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "Phys.org"
+published = "2026-10-25"
+title = "Global underground CO₂ storage hit record 43.6 million metric tons in 2024 alone"
+url = "https://phys.org/news/2026-10-global-underground-storage-million-metric.html"
+logo = "images/news/physorg.png"
+
+[[news]]
 outlet = "Global CCS Institute"
 published = "2026-10-20"
 title = "The London Register cited in the Global Status of CCS 2026 report"
