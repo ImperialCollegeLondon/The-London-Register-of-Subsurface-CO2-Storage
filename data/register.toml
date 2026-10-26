@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "Imperial College London"
+published = "2026-10-26"
+title = "Global underground CO₂ storage hits record 43.6 million tonnes as London Register expands reach"
+url = "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/global-underground-co-storage-hits-record-436-million-tonnes-as-london-register-expands-reach/"
+logo = "images/news/imperial.png"
+
+[[news]]
 outlet = "Phys.org"
 published = "2026-10-25"
 title = "Global underground CO₂ storage hit record 43.6 million metric tons in 2024 alone"
