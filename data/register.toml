@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "Carbon Herald"
+published = "2026-10-26"
+title = "US Leads Global Surge As Underground CO2 Storage Reaches 43.6M Tons"
+url = "https://carbonherald.com/us-leads-global-surge-as-underground-co2-storage-reaches-43-6m-tons/"
+logo = "images/news/carbonherald.png"
+
+[[news]]
 outlet = "Imperial College London"
 published = "2026-10-26"
 title = "Global underground CO₂ storage hits record 43.6 million tonnes as London Register expands reach"
