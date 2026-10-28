@@ -131,6 +131,13 @@ url = "https://www.imperial.ac.uk/news/articles/engineering/earth-science/2026/g
 logo = "images/news/imperial.png"
 
 [[news]]
+outlet = "Interesting Engineering"
+published = "2026-10-25"
+title = "Underground carbon storage hits record 43.6 million tons as US leads global charge"
+url = "https://interestingengineering.com/science/global-underground-carbon-dioxide-storage"
+logo = "images/news/interestingengineering.png"
+
+[[news]]
 outlet = "Phys.org"
 published = "2026-10-25"
 title = "Global underground CO₂ storage hit record 43.6 million metric tons in 2024 alone"
