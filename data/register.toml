@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "Earth.com"
+published = "2026-10-28"
+title = "Underground carbon storage hits record high, reveals troubling climate reality"
+url = "https://www.earth.com/environment/underground-carbon-storage-hits-record-high-reveals-troubling-climate-reality/"
+logo = "images/news/earth.png"
+
+[[news]]
 outlet = "chemeurope.com"
 published = "2026-10-27"
 title = "Global underground CO₂ storage hits record 43.6 million tonnes"
