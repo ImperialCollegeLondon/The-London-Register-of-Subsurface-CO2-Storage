@@ -117,6 +117,27 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "chemeurope.com"
+published = "2026-10-27"
+title = "Global underground CO₂ storage hits record 43.6 million tonnes"
+url = "https://www.chemeurope.com/en/news/1190176/global-underground-co-storage-hits-record-43-6-million-tonnes.html"
+logo = "images/news/chemeurope.png"
+
+[[news]]
+outlet = "The Greater London Herald"
+published = "2026-10-26"
+title = "Global CO2 Storage Hits Record 43.6 Million Tonnes as London Register Expands"
+url = "https://greaterlondonherald.co.uk/kensington-and-chelsea/general/global-co2-storage-hits-record-436-million-tonnes-as-london-register-expands"
+logo = "images/news/greaterlondonherald.jpg"
+
+[[news]]
+outlet = "Bioengineer.org"
+published = "2026-10-26"
+title = "Underground CO2 storage reaches record 43.6 million tonnes in a single year"
+url = "https://bioengineer.org/underground-co2-storage-reaches-record-43-6-million-tonnes-in-a-single-year/"
+logo = "images/news/bioengineer.png"
+
+[[news]]
 outlet = "Carbon Herald"
 published = "2026-10-26"
 title = "US Leads Global Surge As Underground CO2 Storage Reaches 43.6M Tons"
