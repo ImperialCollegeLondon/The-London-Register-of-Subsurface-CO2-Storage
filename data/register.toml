@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "ProPublica"
+published = "2026-10-30"
+title = "How a Secret Vote by U.N. Scientists Legitimized Carbon Capture and Skewed Decades of Climate Policy"
+url = "https://www.propublica.org/article/carbon-capture-storage-fossil-fuel-sally-benson"
+logo = "images/news/propublica.png"
+
+[[news]]
 outlet = "Sustainability Online"
 published = "2026-10-29"
 title = "Global underground CO₂ storage reaches more than 420 million tonnes"
