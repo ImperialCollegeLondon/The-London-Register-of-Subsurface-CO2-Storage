@@ -201,6 +201,20 @@ url = "https://www.wbcsd.org/resources/informing-the-deployment-of-carbon-captur
 logo = "images/news/wbcsd.png"
 
 [[news]]
+outlet = "The Energy Mix"
+published = "2026-01-07"
+title = "Chevron’s Gorgon CCS Plant Records Worst Performance Ever"
+url = "https://www.theenergymix.com/chevrons-gorgon-ccs-plant-records-worst-performance-ever/"
+logo = "images/news/theenergymix.png"
+
+[[news]]
+outlet = "Energy Institute (New Energy World)"
+published = "2025-11-26"
+title = "Extent of global CCS mapped for first time as projects in Qatar and UK take steps forward"
+url = "https://knowledge.energyinst.org/new-energy-world/article?id=139980"
+logo = "images/news/energyinstitute.png"
+
+[[news]]
 outlet = "E&T Magazine (IET)"
 published = "2025-11-18"
 title = "383 million tonnes of CO2 permanently stored underground since 1996, new report finds"
