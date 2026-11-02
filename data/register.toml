@@ -201,6 +201,13 @@ url = "https://www.wbcsd.org/resources/informing-the-deployment-of-carbon-captur
 logo = "images/news/wbcsd.png"
 
 [[news]]
+outlet = "The Guardian"
+published = "2025-12-14"
+title = "Carbon capture was spruiked as a way of limiting emissions – but has Australia been greenwashed?"
+url = "https://www.theguardian.com/environment/2025/dec/14/carbon-capture-and-storage-ccs-spruiked-emissions-reduction-has-australia-been-greenwashed"
+logo = "images/news/guardian.png"
+
+[[news]]
 outlet = "Energy Institute (New Energy World)"
 published = "2025-11-26"
 title = "Extent of global CCS mapped for first time as projects in Qatar and UK take steps forward"
