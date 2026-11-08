@@ -117,6 +117,13 @@ date = "7 Oct 2026"
 note = "Clive Sequestration Facility 2025 value added from Alberta Petrinex data."
 
 [[news]]
+outlet = "Carbon Pulse"
+published = "2026-10-30"
+title = "DATA DIVE: US, Brazil account for significant majority of global CO2 storage"
+url = "https://carbon-pulse.com/565525/"
+logo = "images/news/carbonpulse.jpg"
+
+[[news]]
 outlet = "Sustainability Online"
 published = "2026-10-29"
 title = "Global underground CO₂ storage reaches more than 420 million tonnes"
